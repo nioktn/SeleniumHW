@@ -2,24 +2,13 @@
 using NUnit;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 
 namespace Tests
 {
     [TestFixture]
-    public class TestOne
+    public class TestOneEdge : BaseTest<EdgeDriver>
     {
-        IWebDriver driver;
-        ChromeOptions options;
-
-        [OneTimeSetUp]
-        public void Initialize()
-        {
-            options = new ChromeOptions();
-            options.AddArguments("--start-maximized");
-            driver = new ChromeDriver(options);
-        }
-
         [Test]
         public void TestMethod1()
         {
@@ -30,7 +19,7 @@ namespace Tests
         }
 
         [OneTimeTearDown]
-        public void LastCleanUp()
+        public override void LastCleanUp()
         {
             driver.Quit();
         }
