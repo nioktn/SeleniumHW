@@ -25,7 +25,7 @@ namespace Pages
 
         public void LogInAdminPage(String username, String password)
         {
-            EmailField.SendKeys(username);
+            UsernameField.SendKeys(username);
             PassField.SendKeys(password);
             LoginButton.Click();
         }
