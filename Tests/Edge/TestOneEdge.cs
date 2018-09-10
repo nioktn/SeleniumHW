@@ -2,20 +2,21 @@
 using NUnit;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Edge;
 using Pages;
 
-namespace Tests
+namespace Tests.Edge
 {
     [TestFixture]
-    public class TestOneFirefox : BaseTest<FirefoxDriver>
+    public class TestOneEdge : BaseTest<EdgeDriver>
     {
         [Test]
         public void TestMethod1()
         {
-            driver.Url = "http://localhost/litecart/en/";
-            LoginSection ls = new LoginSection(driver);
-            ls.LogInStoreUser("test@gmail.com", "testpassword1");
+            driver.Url = "https://www.google.com/";
+            IWebElement searchField = driver.FindElement(By.Id("lst-ib"));
+            searchField.SendKeys("hi there");
+            searchField.SendKeys(Keys.Enter);
         }
 
         [Test]
@@ -24,6 +25,13 @@ namespace Tests
             driver.Url = "http://localhost/litecart/admin/";
             LoginSection loginSection = new LoginSection(driver);
             loginSection.LogInAdminPage("admin", "admin");
+        }
+
+
+        [OneTimeTearDown]
+        public override void LastCleanUp()
+        {
+            driver.Quit();
         }
     }
 }

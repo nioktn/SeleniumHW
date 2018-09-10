@@ -58,6 +58,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminPage\AdminPage.cs" />
+    <Compile Include="AdminPage\Content.cs" />
+    <Compile Include="AdminPage\Sidebar.cs" />
+    <Compile Include="Helpers\ElemHelper.cs" />
     <Compile Include="LoginSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

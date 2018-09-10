@@ -9,12 +9,14 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Support.UI;
 
 namespace Tests
 {
     public class BaseTest<T> where T : IWebDriver, new()
     {
         protected IWebDriver driver;
+        protected WebDriverWait wait;
 
         [OneTimeSetUp]
         public virtual void FirstInitialize()
@@ -30,7 +32,8 @@ namespace Tests
                 driver = new T();
                 driver.Manage().Window.Maximize();
             }
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
         [SetUp]

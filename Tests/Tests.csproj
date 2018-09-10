@@ -69,9 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
-    <Compile Include="TestOneEdge.cs" />
-    <Compile Include="TestOneFirefox.cs" />
-    <Compile Include="TestOneChrome.cs" />
+    <Compile Include="Chrome\AdminPageItems.cs" />
+    <Compile Include="Edge\AdminPageItems.cs" />
+    <Compile Include="Edge\TestOneEdge.cs" />
+    <Compile Include="Firefox\AdminPageItems.cs" />
+    <Compile Include="Firefox\TestOneFirefox.cs" />
+    <Compile Include="Chrome\TestOneChrome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

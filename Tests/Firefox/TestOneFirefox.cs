@@ -2,14 +2,15 @@
 using NUnit;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using Pages;
 
-namespace Tests
+namespace Tests.Firefox
+
 {
     [TestFixture]
-    public class TestOneChrome : BaseTest<ChromeDriver>
-    {        
+    public class TestOneFirefox : BaseTest<FirefoxDriver>
+    {
         [Test]
         public void TestMethod1()
         {
@@ -17,7 +18,6 @@ namespace Tests
             LoginSection ls = new LoginSection(driver);
             ls.LogInStoreUser("test@gmail.com", "testpassword1");
         }
-
 
         [Test]
         public void EnterAdminPage()
