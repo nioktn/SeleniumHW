@@ -25,5 +25,13 @@ namespace Tests
             LoginSection loginSection = new LoginSection(driver);
             loginSection.LogInAdminPage("admin", "admin");
         }
+
+        [Test]
+        public void EnterAdminPage()
+        {
+            driver.Url = "http://localhost/litecart/admin/";
+            LoginSection loginSection = new LoginSection(driver);
+            loginSection.LogInAdminPage("admin", "admin");
+        }
     }
 }
