@@ -18,14 +18,13 @@ namespace Tests
             ls.LogInStoreUser("test@gmail.com", "testpassword1");
         }
 
-        //[Test]
-        //public void TestMethod1()
-        //{
-        //    driver.Url = "https://www.google.com/";
-        //    IWebElement searchField = driver.FindElement(By.Id("lst-ib"));
-        //    searchField.SendKeys("hi there");
-        //    searchField.SendKeys(Keys.Enter);
-        //}
 
+        [Test]
+        public void EnterAdminPage()
+        {
+            driver.Url = "http://localhost/litecart/admin/";
+            LoginSection loginSection = new LoginSection(driver);
+            loginSection.LogInAdminPage("admin", "admin");
+        }
     }
 }

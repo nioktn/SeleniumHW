@@ -3,6 +3,7 @@ using NUnit;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using Pages;
 
 namespace Tests
 {
@@ -16,6 +17,14 @@ namespace Tests
             IWebElement searchField = driver.FindElement(By.Id("lst-ib"));
             searchField.SendKeys("hi there");
             searchField.SendKeys(Keys.Enter);
+        }
+
+        [Test]
+        public void EnterAdminPage()
+        {
+            driver.Url = "http://localhost/litecart/admin/";
+            LoginSection loginSection = new LoginSection(driver);
+            loginSection.LogInAdminPage("admin", "admin");
         }
     }
 }

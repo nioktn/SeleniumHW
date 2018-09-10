@@ -12,7 +12,6 @@ using OpenQA.Selenium.Edge;
 
 namespace Tests
 {
-    [TestFixture]
     public class BaseTest<T> where T : IWebDriver, new()
     {
         protected IWebDriver driver;
@@ -23,14 +22,15 @@ namespace Tests
             if (typeof(T).Name.Equals("ChromeDriver"))
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("--start-maximize");
-                driver = new T();
+                chromeOptions.AddArgument("--start-maximized");
+                driver = new ChromeDriver(chromeOptions);
             }
             else
             {
                 driver = new T();
                 driver.Manage().Window.Maximize();
             }
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
         }
 
         [SetUp]
