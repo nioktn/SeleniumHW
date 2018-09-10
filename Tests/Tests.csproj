@@ -72,8 +72,10 @@
     <Compile Include="Chrome\MainPageStickers.cs" />
     <Compile Include="Chrome\AdminPageItems.cs" />
     <Compile Include="Edge\AdminPageItems.cs" />
+    <Compile Include="Edge\MainPageStickers.cs" />
     <Compile Include="Edge\TestOneEdge.cs" />
     <Compile Include="Firefox\AdminPageItems.cs" />
+    <Compile Include="Firefox\MainPageStickers.cs" />
     <Compile Include="Firefox\TestOneFirefox.cs" />
     <Compile Include="Chrome\TestOneChrome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
