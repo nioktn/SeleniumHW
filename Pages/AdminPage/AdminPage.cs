@@ -8,6 +8,8 @@ namespace Pages
     {
         private IWebDriver driver;
 
+        public Sidebar sidebarInstance { get => new Sidebar(driver); }
+
         public AdminPage(IWebDriver driver)
         {
             this.driver = driver;
@@ -15,14 +17,12 @@ namespace Pages
 
         public IList<IWebElement> GetMenuItems(WebDriverWait wait)
         {
-            Sidebar sidebar = new Sidebar(driver);
-            return sidebar.GetMenuItems(wait);
+            return sidebarInstance.GetMenuItems(wait);
         }
 
         public IList<IWebElement> GetSubMenuItems(WebDriverWait wait)
         {
-            Sidebar sidebar = new Sidebar(driver);
-            return sidebar.GetSubMenuItems(wait);
+            return sidebarInstance.GetSubMenuItems(wait);
         }
 
         public List<string> GetMenuItemsNames(WebDriverWait wait)
@@ -53,8 +53,7 @@ namespace Pages
 
         public AdminPage SelectMenuItem(string itemName, WebDriverWait wait)
         {
-            Sidebar sidebar = new Sidebar(driver);
-            sidebar.SelectMenuItem(itemName, wait);
+            sidebarInstance.SelectMenuItem(itemName, wait);
             return this;
         }
     }

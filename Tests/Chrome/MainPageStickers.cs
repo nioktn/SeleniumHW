@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 
 namespace Tests.Chrome
-
 {
     [TestFixture]
     public class MainPageStickers : BaseTest<ChromeDriver>
@@ -21,7 +20,6 @@ namespace Tests.Chrome
             foreach (var item in productsList)
             {
                 stickersPresenceResults.Add(new ProductCompactView(driver, item).HasOneSticker(wait));
-                Console.WriteLine(new ProductCompactView(driver, item).HasOneSticker(wait));
             }
 
             int testResult = 1;

@@ -1,11 +1,11 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Pages;
 using System;
 using System.Collections.Generic;
 
 namespace Tests.Chrome
-
 {
     [TestFixture]
     public class AdminPageItems : BaseTest<ChromeDriver>
@@ -38,6 +38,27 @@ namespace Tests.Chrome
                 testResult *= Convert.ToInt32(item);
             }
             Assert.IsTrue(testResult == 1);
+        }
+
+        [Test]
+        public void tabletest()
+        {
+            driver.Url = "http://localhost/litecart/admin/";
+            loginSection = new LoginSection(driver);
+            var admPage = loginSection.LogInAdminPage("admin", "admin");
+            driver.Url = "http://localhost/litecart/admin/?app=countries&doc=countries";
+
+            //TableHelper tableHelper = new TableHelper(driver.FindElement(By.CssSelector(".tableData")), wait);
+            TableHelper tableHelper = new TableHelper(driver.FindElement(By.CssSelector(".dataTable")), wait);
+            foreach (var item in tableHelper.GetColumnByIndex(3))
+            {
+                Console.WriteLine(item.Text);
+            }
+            foreach (var item in tableHelper.GetColumnByName("Name"))
+            {
+                Console.WriteLine(item.Text);
+            }
+            Console.WriteLine(tableHelper.GetCellByRowIndexColName(220, "Name"));
         }
     }
 }

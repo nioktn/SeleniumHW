@@ -21,7 +21,7 @@ namespace Pages
 
         public IList<IWebElement> GetAllProducts(WebDriverWait wait)
         {
-            wait.Until((d) => SeleniumExtras.WaitHelpers.ExpectedConditions.VisibilityOfAllElementsLocatedBy(_allProducts));
+            wait.Until((d) => ElemHelper.IsElementVisible(driver, _allProducts));
             return AllProducts;
         }
     }
