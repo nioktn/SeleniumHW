@@ -35,7 +35,8 @@ namespace Tests.Chrome
             admPage.LogOut();
         }
 
-        static object[] countriesIds = { new Int32[] { 223 },
+        static object[] countriesIds = {
+            new Int32[] { 223 },
             new Int32[] { 38 } };
 
         [Test, TestCaseSource("countriesIds")]
