@@ -15,6 +15,13 @@ namespace Pages
         private readonly By _price = By.CssSelector(".price");
         private readonly By _sticker = By.CssSelector(".sticker");
 
+        public IWebElement Name { get => baseElement.FindElement(_name); }
+        public IWebElement Manufacturer { get => baseElement.FindElement(_manufacturer); }
+        public IWebElement RegularPrice { get => baseElement.FindElement(_regularPrice); }
+        public IWebElement CampaignPrice { get => baseElement.FindElement(_campaignPrice); }
+        public IWebElement Price { get => baseElement.FindElement(_price); }
+        public IWebElement Sticker { get => baseElement.FindElement(_sticker); }      
+
         public ProductCompactView(IWebDriver driver, IWebElement baseElement)
         {
             this.driver = driver;

@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
     <Compile Include="Chrome\CountriesTests.cs" />
+    <Compile Include="Chrome\ProductPageCompactViewTest.cs" />
     <Compile Include="Chrome\MainPageStickers.cs" />
     <Compile Include="Chrome\AdminPageItems.cs" />
     <Compile Include="Edge\AdminPageItems.cs" />
