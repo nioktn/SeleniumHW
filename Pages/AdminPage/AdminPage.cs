@@ -56,5 +56,11 @@ namespace Pages
             sidebarInstance.SelectMenuItem(itemName, wait);
             return this;
         }
+
+        public void LogOut()
+        {
+            Sidebar sidebar = new Sidebar(driver);
+            sidebar.LogoutBtn.Click();
+        }
     }
 }

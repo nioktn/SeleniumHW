@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="AdminPage\AdminPage.cs" />
     <Compile Include="AdminPage\Content.cs" />
+    <Compile Include="AdminPage\Contents\EditCountry.cs" />
     <Compile Include="AdminPage\Contents\Countries.cs" />
     <Compile Include="AdminPage\Sidebar.cs" />
     <Compile Include="Helpers\TableHelper.cs" />
