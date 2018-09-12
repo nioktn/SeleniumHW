@@ -74,6 +74,7 @@
     <Compile Include="Chrome\ProductPageCompactViewTest.cs" />
     <Compile Include="Chrome\MainPageStickers.cs" />
     <Compile Include="Chrome\AdminPageItems.cs" />
+    <Compile Include="Chrome\TestfileInput.cs" />
     <Compile Include="Edge\AdminPageItems.cs" />
     <Compile Include="Edge\MainPageStickers.cs" />
     <Compile Include="Edge\TestOneEdge.cs" />

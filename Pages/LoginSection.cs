@@ -7,6 +7,7 @@ namespace Pages
     {
         private readonly IWebDriver driver;
         private readonly WebDriverWait wait;
+        private readonly By _loginForm = By.CssSelector("[name=login_form]");
         private readonly By _emailField = By.XPath("//form[@name='login_form']/.//*[contains(@name, 'email')]");
         private readonly By _usernameField = By.CssSelector("[name=username]");
         private readonly By _passField = By.CssSelector("[name=password]");
@@ -38,6 +39,14 @@ namespace Pages
 
         public void LogInStoreUser(string email, string password)
         {
+            EmailField.SendKeys(email);
+            PassField.SendKeys(password);
+            LoginButton.Click();
+        }
+
+        public void LogInStoreUser(string email, string password, WebDriverWait wait)
+        {
+            wait.Until((d) => ElemHelper.IsElementVisible(driver, _loginForm));
             EmailField.SendKeys(email);
             PassField.SendKeys(password);
             LoginButton.Click();

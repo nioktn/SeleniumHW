@@ -60,11 +60,15 @@
   <ItemGroup>
     <Compile Include="AdminPage\AdminPage.cs" />
     <Compile Include="AdminPage\Content.cs" />
-    <Compile Include="AdminPage\Contents\EditCountry.cs" />
-    <Compile Include="AdminPage\Contents\Countries.cs" />
+    <Compile Include="AdminPage\Contents\Catalog\NewProduct\TabGeneral.cs" />
+    <Compile Include="AdminPage\Contents\Catalog\NewProduct\AddNewProduct.cs" />
+    <Compile Include="AdminPage\Contents\Catalog\Catalog.cs" />
+    <Compile Include="AdminPage\Contents\Countries\EditCountry.cs" />
+    <Compile Include="AdminPage\Contents\Countries\Countries.cs" />
     <Compile Include="AdminPage\Sidebar.cs" />
     <Compile Include="Helpers\TableHelper.cs" />
     <Compile Include="Helpers\ElemHelper.cs" />
+    <Compile Include="Account\LoggedUserSection.cs" />
     <Compile Include="RegisterCustomerPage.cs" />
     <Compile Include="LoginSection.cs" />
     <Compile Include="MainPage\HeaderWrapper.cs" />

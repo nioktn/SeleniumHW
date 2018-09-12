@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using Pages;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Tests.Chrome
 {
@@ -40,6 +41,10 @@ namespace Tests.Chrome
                 .EnterPhone(phone)
                 .EnterPassword(password)
                 .SubmitRegistration();
+            LoggedUserSection userSection = new LoggedUserSection(driver);
+            userSection.LogOut(wait);
+            loginSection.LogInStoreUser(email, password);
+            userSection.LogOut(wait);
         }
 
         public string GetRandomEmail()
