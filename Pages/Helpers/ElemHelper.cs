@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace Pages
 {
@@ -51,6 +52,24 @@ namespace Pages
             {
                 return false;
             }
+        }
+
+        public static void SelectFromDDL(IWebElement selectTag, string optionName)
+        {
+            SelectElement select = new SelectElement(selectTag);
+            select.SelectByText(optionName);
+        }
+
+        public static void SelectFromDDLbyValue(IWebElement selectTag, string valueName)
+        {
+            SelectElement select = new SelectElement(selectTag);
+            select.SelectByValue(valueName);
+        }
+
+        public static void SelectFromDDL(IWebElement selectTag, int index)
+        {
+            SelectElement select = new SelectElement(selectTag);
+            select.SelectByIndex(index);
         }
     }
 }

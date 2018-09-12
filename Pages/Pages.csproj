@@ -65,7 +65,9 @@
     <Compile Include="AdminPage\Sidebar.cs" />
     <Compile Include="Helpers\TableHelper.cs" />
     <Compile Include="Helpers\ElemHelper.cs" />
+    <Compile Include="RegisterCustomerPage.cs" />
     <Compile Include="LoginSection.cs" />
+    <Compile Include="MainPage\HeaderWrapper.cs" />
     <Compile Include="MainPage\MainPage.cs" />
     <Compile Include="Product\ProductPage.cs" />
     <Compile Include="Product\ProductCompactView.cs" />
