@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Pages
 {
-    public class TabGeneral : Content
+    public class TabGeneral : AddNewProduct
     {
         private readonly By _uploadImageField = By.XPath("//input[contains(@name, 'new_images[]')]");
         private readonly By _dateValidFrom = By.CssSelector("[name=date_valid_from]");
