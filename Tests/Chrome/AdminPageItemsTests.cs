@@ -1,13 +1,12 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 using Pages;
-using System;
 using System.Collections.Generic;
 
-namespace Tests.Firefox
+namespace Tests.Chrome
 {
     [TestFixture]
-    public class AdminPageItemsTests : BaseTest<FirefoxDriver>
+    public class AdminPageItemsTests : BaseTest<ChromeDriver>
     {
         LoginSection loginSection;
         [Test]
@@ -19,24 +18,20 @@ namespace Tests.Firefox
             var admPage = loginSection.LogInAdminPage("admin", "admin");
 
             List<string> menuItemsNames = admPage.GetMenuItemsNames();
-            List<bool> h1ExistsResults = new List<bool>();
+            int numOfh1Headers = 0;
             foreach (var item in menuItemsNames)
             {
                 admPage.SelectMenuItem(item);
-                h1ExistsResults.Add(admPage.ContentHeaderPresence());
+                if (admPage.ContentHeaderPresence()) numOfh1Headers++;
 
                 foreach (var subItem in admPage.GetSubMenuItemsNames())
                 {
                     admPage.SelectMenuItem(subItem);
-                    h1ExistsResults.Add(admPage.ContentHeaderPresence());
+                    if (admPage.ContentHeaderPresence()) numOfh1Headers++;
                 }
             }
-            int testResult = 1;
-            foreach (var item in h1ExistsResults)
-            {
-                testResult *= Convert.ToInt32(item);
-            }
-            Assert.IsTrue(testResult == 1);
+            bool thereAre59h1Headers = numOfh1Headers == 59;
+            Assert.IsTrue(thereAre59h1Headers);
         }
     }
 }

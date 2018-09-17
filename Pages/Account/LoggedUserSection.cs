@@ -1,12 +1,12 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace Pages
 {
     public class LoggedUserSection
     {
         private readonly IWebDriver driver;
-        private readonly WebDriverWait wait;
         private readonly By _loggedUserSection = By.CssSelector("#box-account");
         private readonly By _customerService = By.XPath("//div[@id='box-account']/.//a[contains(text(), 'Customer Service')]");
         private readonly By _orderHistory = By.XPath("//div[@id='box-account']/.//a[contains(text(), 'Order History')]");
@@ -25,12 +25,7 @@ namespace Pages
 
         public void LogOut()
         {
-            Logout.Click();
-        }
-
-        public void LogOut(WebDriverWait wait)
-        {
-            wait.Until((d) => ElemHelper.IsElementVisible(driver, _logout));
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _logout));
             Logout.Click();
         }
     }

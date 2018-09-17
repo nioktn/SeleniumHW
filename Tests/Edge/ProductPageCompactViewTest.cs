@@ -1,14 +1,14 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using Pages;
 using System;
 using System.Collections.Generic;
 
-namespace Tests.Chrome
+namespace Tests.Edge
 {
     [TestFixture]
-    public class ProductPageCompactViewTest : BaseTest<ChromeDriver>
+    public class ProductPageCompactViewTests : BaseTest<EdgeDriver>
     {
         MainPage mainPage;
         IWebElement firstCampaignProduct;
@@ -16,11 +16,11 @@ namespace Tests.Chrome
         ProductPage productPage;
 
         [Test]
-        public void MainPageCompactViewAspectsCompare()
+        public void TestMainPageCompactViewAspectsCompare()
         {
             driver.Url = "http://localhost/litecart/";
             mainPage = new MainPage(driver);
-            firstCampaignProduct = mainPage.GetCampaignsProducts(wait)[0];
+            firstCampaignProduct = mainPage.GetCampaignsProducts()[0];
             compactView = new ProductCompactView(driver, firstCampaignProduct);
             productPage = new ProductPage(driver);
 
@@ -29,10 +29,10 @@ namespace Tests.Chrome
             compactViewValues.Add(compactView.RegularPrice.Text);
             compactViewValues.Add(compactView.CampaignPrice.Text);
 
-            CompactViewRegularPriceGrayColor();
-            CompactViewCampaignPriceRedBold();
-            PageRegularPriceGrayLine();
-            PageCampaignPriceRedBold();
+            TestCompactViewRegularPriceGrayColor();
+            TestCompactViewCampaignPriceRedBold();
+            TestPageRegularPriceGrayLine();
+            TestPageCampaignPriceRedBold();
             
             List<string> productPageValues = new List<string>();
             productPageValues.Add(productPage.Name.Text);
@@ -42,7 +42,7 @@ namespace Tests.Chrome
             CollectionAssert.AreEqual(compactViewValues, productPageValues);
         }
 
-        public void CompactViewRegularPriceGrayColor()
+        public void TestCompactViewRegularPriceGrayColor()
         {
             var compactRegularRgbValues = compactView.RegularPrice.GetCssValue("color").Substring(5, 13).Split(',');
             bool colorIsGray = Convert.ToInt32(compactRegularRgbValues[0]) == Convert.ToInt32(compactRegularRgbValues[1]) &
@@ -53,7 +53,7 @@ namespace Tests.Chrome
             Assert.IsTrue(isLineThrow & colorIsGray);
         }
 
-        public void CompactViewCampaignPriceRedBold()
+        public void TestCompactViewCampaignPriceRedBold()
         {
             var compactCampaignRgbValues = compactView.CampaignPrice.GetCssValue("color").Substring(5, 13).Split(',');
             bool compactColorIsRed = Convert.ToInt32(compactCampaignRgbValues[1]) == 0 & Convert.ToInt32(compactCampaignRgbValues[2]) == 0; //red color
@@ -67,7 +67,7 @@ namespace Tests.Chrome
             Assert.IsTrue(compactColorIsRed & isBold & isCampaignFontBigger);
         }
 
-        public void PageRegularPriceGrayLine()
+        public void TestPageRegularPriceGrayLine()
         {
             firstCampaignProduct.Click();
             var pageRegularRgbValues = productPage.RegularPrice.GetCssValue("color").Substring(5, 13).Split(',');
@@ -79,7 +79,7 @@ namespace Tests.Chrome
             Assert.IsTrue(pageColorIsGray & isLineThrough);
         }
 
-        public void PageCampaignPriceRedBold()
+        public void TestPageCampaignPriceRedBold()
         {
             var pageCampaignRgbValues = productPage.CampaignPrice.GetCssValue("color").Substring(5, 13).Split(',');
             bool pageColorIsRed = Convert.ToInt32(pageCampaignRgbValues[1]) == 0 & Convert.ToInt32(pageCampaignRgbValues[2]) == 0; //red color

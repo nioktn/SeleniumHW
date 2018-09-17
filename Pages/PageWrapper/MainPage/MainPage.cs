@@ -1,12 +1,12 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 using System.Collections.Generic;
 
 namespace Pages
 {
-    public class MainPage
-    {
-        private readonly IWebDriver driver;
+    public class MainPage : HeaderWrapper
+    {       
         private readonly By _boxMostPopular = By.CssSelector("#box-most-popular");
         private readonly By _boxCampaigns = By.CssSelector("#box-campaigns");
         private readonly By _boxLatestProducts = By.CssSelector("#box-latest-products");
@@ -18,20 +18,39 @@ namespace Pages
         public IList<IWebElement> MostPopularProducts { get => driver.FindElement(_boxMostPopular).FindElements(_innerProducts); }
         public IList<IWebElement> LatestProducts { get => driver.FindElement(_boxLatestProducts).FindElements(_innerProducts); }
 
-        public MainPage(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
+        public MainPage(IWebDriver driver) : base(driver) { }
 
-        public IList<IWebElement> GetAllProducts(WebDriverWait wait)
+        public IList<IWebElement> GetAllProducts()
         {
-            wait.Until((d) => ElemHelper.IsElementVisible(driver, _allProducts));
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _allProducts));
             return AllProducts;
         }
 
-        public IList<IWebElement> GetCampaignsProducts(WebDriverWait wait)
+        public IWebElement GetProductByName(string name)
         {
-            wait.Until((d) => ElemHelper.IsElementVisible(driver, _boxCampaigns));
+            foreach (var item in GetAllProducts())
+            {
+                if (new ProductCompactView(driver, item).Name.Text.Contains(name))
+                    return item; 
+            }
+            return null;
+        }
+
+        public ProductPage SelectProduct(IWebElement product)
+        {
+            product.Click();
+            return new ProductPage(driver);
+        }
+
+        public ProductPage SelectProductByName(string name)
+        {
+            GetProductByName(name).Click();
+            return new ProductPage(driver);
+        }
+
+        public IList<IWebElement> GetCampaignsProducts()
+        {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _boxCampaigns));
             return CampaignsProducts;
         }
     }

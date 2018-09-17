@@ -69,19 +69,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
+    <Compile Include="Chrome\AdminPageItemsTests.cs" />
+    <Compile Include="Chrome\MainPageStickersTests.cs" />
+    <Compile Include="Chrome\ProductPageCompactViewTests.cs" />
+    <Compile Include="Chrome\RemoteTests.cs" />
+    <Compile Include="Chrome\TestFileInputTests.cs" />
     <Compile Include="Chrome\CountriesTests.cs" />
+    <Compile Include="Chrome\CartTests.cs" />
     <Compile Include="Chrome\RegistragionPageTest.cs" />
-    <Compile Include="Chrome\ProductPageCompactViewTest.cs" />
-    <Compile Include="Chrome\MainPageStickers.cs" />
-    <Compile Include="Chrome\AdminPageItems.cs" />
-    <Compile Include="Chrome\TestfileInput.cs" />
+    <Compile Include="Chrome\TestOneChromeTests.cs" />
+    <Compile Include="Chrome\WindowsTests.cs" />
     <Compile Include="Edge\AdminPageItems.cs" />
+    <Compile Include="Edge\CartTests.cs" />
+    <Compile Include="Edge\CountriesTests.cs" />
     <Compile Include="Edge\MainPageStickers.cs" />
+    <Compile Include="Edge\ProductPageCompactViewTest.cs" />
+    <Compile Include="Edge\RegistragionPageTest.cs" />
+    <Compile Include="Edge\TestfileInput.cs" />
     <Compile Include="Edge\TestOneEdge.cs" />
+    <Compile Include="Edge\WindowsTest.cs" />
     <Compile Include="Firefox\AdminPageItems.cs" />
+    <Compile Include="Firefox\CartTests.cs" />
+    <Compile Include="Firefox\CountriesTests.cs" />
     <Compile Include="Firefox\MainPageStickers.cs" />
+    <Compile Include="Firefox\ProductPageCompactViewTest.cs" />
+    <Compile Include="Firefox\RegistragionPageTest.cs" />
+    <Compile Include="Firefox\TestfileInput.cs" />
     <Compile Include="Firefox\TestOneFirefox.cs" />
-    <Compile Include="Chrome\TestOneChrome.cs" />
+    <Compile Include="Firefox\WindowsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,11 +116,11 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.10.1\build\NUnit.props'))" />
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props'))" />
-    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.41.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.41.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.IEDriver.3.14.0\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.IEDriver.3.14.0\build\Selenium.WebDriver.IEDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.Firefox.WebDriver.0.21.0\build\Selenium.Firefox.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Firefox.WebDriver.0.21.0\build\Selenium.Firefox.WebDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.42.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.42.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
-  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.41.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.41.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Import Project="..\packages\Selenium.WebDriver.IEDriver.3.14.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.IEDriver.3.14.0\build\Selenium.WebDriver.IEDriver.targets')" />
   <Import Project="..\packages\Selenium.Firefox.WebDriver.0.21.0\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('..\packages\Selenium.Firefox.WebDriver.0.21.0\build\Selenium.Firefox.WebDriver.targets')" />
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.42.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.42.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
 </Project>

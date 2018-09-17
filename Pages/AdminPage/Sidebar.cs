@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 using System.Collections.Generic;
 
 namespace Pages
@@ -29,20 +30,20 @@ namespace Pages
             this.driver = driver;
         }
 
-        public IList<IWebElement> GetMenuItems(WebDriverWait wait)
+        public IList<IWebElement> GetMenuItems()
         {
-            wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(_menuItems));
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(_menuItems));
             return MenuItems;
         }
 
-        public void SelectMenuItem(string itemName, WebDriverWait wait)
+        public void SelectMenuItem(string itemName)
         {
-            wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(_menuItems));
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(_menuItems));
             string locatorStr = string.Format("//*[.='{0}']/ancestor::a", itemName);
             driver.FindElement(By.XPath(locatorStr)).Click();
         }
 
-        public IList<IWebElement> GetSubMenuItems(WebDriverWait wait)
+        public IList<IWebElement> GetSubMenuItems()
         {
             return SubMenuItems;
         }

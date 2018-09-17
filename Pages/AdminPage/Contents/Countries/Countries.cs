@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 using System.Collections.Generic;
 
 namespace Pages
@@ -13,9 +14,9 @@ namespace Pages
 
         public Countries(IWebDriver driver) : base(driver) { }
 
-        public List<string> GetCountriesNames(WebDriverWait wait)
+        public List<string> GetCountriesNames()
         {
-            TableHelper table = new TableHelper(CountriesTable, wait);
+            TableHelper table = new TableHelper(CountriesTable);
             List<string> countriesNames = new List<string>();
             foreach (var item in table.GetColumnByName("Name"))
             {
@@ -24,10 +25,10 @@ namespace Pages
             return countriesNames;
         }
 
-        public EditCountry OpenCountryById(int id, WebDriverWait wait)
+        public EditCountry OpenCountryById(int id)
         {
-            TableHelper table = new TableHelper(CountriesTable, wait);
-            wait.Until((d) => ElemHelper.IsElementVisible(driver, _countriesTable));
+            TableHelper table = new TableHelper(CountriesTable);
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _countriesTable));
             table.GetCellByRowIndexColName(id, "Name").FindElement(By.XPath("./a")).Click();
             return new EditCountry(driver);
         }

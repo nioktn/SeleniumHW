@@ -1,12 +1,12 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace Pages
 {
     public class LoginSection
     {
         private readonly IWebDriver driver;
-        private readonly WebDriverWait wait;
         private readonly By _loginForm = By.CssSelector("[name=login_form]");
         private readonly By _emailField = By.XPath("//form[@name='login_form']/.//*[contains(@name, 'email')]");
         private readonly By _usernameField = By.CssSelector("[name=username]");
@@ -39,24 +39,18 @@ namespace Pages
 
         public void LogInStoreUser(string email, string password)
         {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _emailField));
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _passField));
             EmailField.SendKeys(email);
             PassField.SendKeys(password);
             LoginButton.Click();
         }
 
-        public void LogInStoreUser(string email, string password, WebDriverWait wait)
+        public RegisterCustomerPage CreateNewUser()
         {
-            wait.Until((d) => ElemHelper.IsElementVisible(driver, _loginForm));
-            EmailField.SendKeys(email);
-            PassField.SendKeys(password);
-            LoginButton.Click();
-        }
-
-        public RegisterCustomerPage CreateNewUser(WebDriverWait wait)
-        {
-            wait.Until((d) => ElemHelper.IsElementVisible(driver, _registerButton));
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _registerButton));
             RegisterButton.Click();
-            return new RegisterCustomerPage(driver, wait);
+            return new RegisterCustomerPage(driver);
         }
     }
 }

@@ -8,10 +8,10 @@ using Pages;
 namespace Tests.Edge
 {
     [TestFixture]
-    public class TestOneEdge : BaseTest<EdgeDriver>
+    public class TestOneEdgeTests : BaseTest<EdgeDriver>
     {
         [Test]
-        public void TestMethod1()
+        public void TestTestMethod1()
         {
             driver.Url = "https://www.google.com/";
             IWebElement searchField = driver.FindElement(By.Id("lst-ib"));
@@ -20,7 +20,7 @@ namespace Tests.Edge
         }
 
         [Test]
-        public void EnterAdminPage()
+        public void TestEnterAdminPage()
         {
             driver.Url = "http://localhost/litecart/admin/";
             LoginSection loginSection = new LoginSection(driver);

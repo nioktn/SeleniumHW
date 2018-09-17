@@ -1,12 +1,14 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using Pages;
 using System;
+using System.Collections.Generic;
+using System.Threading;
 
-namespace Tests.Chrome
+namespace Tests.Firefox
 {
     [TestFixture]
-    public class RegistrationPageTests : BaseTest<ChromeDriver>
+    public class RegistrationPageTests : BaseTest<FirefoxDriver>
     {
         static object[] newUserData = {
              new string[] {

@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 using System.Threading;
 
 namespace Pages
@@ -7,7 +8,6 @@ namespace Pages
     public class RegisterCustomerPage
     {
         private readonly IWebDriver driver;
-        private readonly WebDriverWait wait;
         private readonly By _taxId = By.CssSelector("[name=tax_id]");
         private readonly By _company = By.CssSelector("[name=company]");
         private readonly By _firstname = By.CssSelector("[name=firstname]");
@@ -42,66 +42,76 @@ namespace Pages
         public IWebElement CreateAccButton { get => driver.FindElement(_createAccButton); }
         public IWebElement ZoneCode { get => driver.FindElement(_zoneCode); }
 
-        public RegisterCustomerPage(IWebDriver driver, WebDriverWait wait)
+        public RegisterCustomerPage(IWebDriver driver)
         {
             this.driver = driver;
-            this.wait = wait;
         }
 
         public RegisterCustomerPage EnterFirstName(string firstname)
         {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _firstname));
             Firstname.SendKeys(firstname);
             return this;
         }
         public RegisterCustomerPage EnterLastName(string lastname)
         {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _lastname));
             Lastname.SendKeys(lastname);
             return this;
         }
         public RegisterCustomerPage EnterMainAddress(string address1)
         {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _address1));
             Address1.SendKeys(address1);
             return this;
         }
         public RegisterCustomerPage EnterCity(string city)
         {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _city));
             City.SendKeys(city);
             return this;
         }
         public RegisterCustomerPage EnterCountry(string countryName)
         {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _country));
             ElemHelper.SelectFromDDL(Country, countryName);
             return this;
         }
         public RegisterCustomerPage EnterZoneCode(string zoneName)
         {
-            wait.Until((d) => ZoneCode.Enabled);
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ZoneCode.Enabled);
             ElemHelper.SelectFromDDLbyValue(ZoneCode, zoneName);
             return this;
         }
         public RegisterCustomerPage EnterPostCode(string postcode)
         {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _postcode));
             Postcode.SendKeys(postcode);
             return this;
         }
         public RegisterCustomerPage EnterEmail(string email)
         {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _email));
             Email.SendKeys(email);
             return this;
         }
         public RegisterCustomerPage EnterPhone(string phone)
         {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _phone));
             Phone.SendKeys(phone);
             return this;
         }
         public RegisterCustomerPage EnterPassword(string password)
         {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _password));
             Password.SendKeys(password);
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _confirmPassword));
             ConfirmPassword.SendKeys(password);
             return this;
         }
         public RegisterCustomerPage SubmitRegistration()
         {
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _createAccButton));
             CreateAccButton.Click();
             return this;
         }

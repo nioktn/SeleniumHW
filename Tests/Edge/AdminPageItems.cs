@@ -7,28 +7,28 @@ using System.Collections.Generic;
 namespace Tests.Edge
 {
     [TestFixture]
-    public class AdminPageItems : BaseTest<EdgeDriver>
+    public class AdminPageItemsTests : BaseTest<EdgeDriver>
     {
         LoginSection loginSection;
         [Test]
-        public void AdminPageClickOnEachMenuItem()
+        public void TestAdminPageClickOnEachMenuItem()
         {
             driver.Url = "http://localhost/litecart/admin/";
             loginSection = new LoginSection(driver);
 
             var admPage = loginSection.LogInAdminPage("admin", "admin");
 
-            List<string> menuItemsNames = admPage.GetMenuItemsNames(wait);
+            List<string> menuItemsNames = admPage.GetMenuItemsNames();
             List<bool> h1ExistsResults = new List<bool>();
             foreach (var item in menuItemsNames)
             {
-                admPage.SelectMenuItem(item, wait);
-                h1ExistsResults.Add(admPage.ContentHeaderPresence(wait));
+                admPage.SelectMenuItem(item);
+                h1ExistsResults.Add(admPage.ContentHeaderPresence());
 
-                foreach (var subItem in admPage.GetSubMenuItemsNames(wait))
+                foreach (var subItem in admPage.GetSubMenuItemsNames())
                 {
-                    admPage.SelectMenuItem(subItem, wait);
-                    h1ExistsResults.Add(admPage.ContentHeaderPresence(wait));
+                    admPage.SelectMenuItem(subItem);
+                    h1ExistsResults.Add(admPage.ContentHeaderPresence());
                 }
             }
             int testResult = 1;

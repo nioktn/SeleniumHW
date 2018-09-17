@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 using System.Collections.Generic;
 
 namespace Pages
@@ -28,9 +29,9 @@ namespace Pages
             this.baseElement = baseElement;
         }
 
-        public bool HasOneSticker(WebDriverWait wait)
+        public bool HasOneSticker()
         {
-            wait.Until((d) => ElemHelper.IsElementVisible(driver, _name));
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _name));
             return baseElement.FindElements(_sticker).Count == 1;
         }
     }

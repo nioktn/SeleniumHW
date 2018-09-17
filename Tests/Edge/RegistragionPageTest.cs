@@ -1,12 +1,14 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using Pages;
 using System;
+using System.Collections.Generic;
+using System.Threading;
 
-namespace Tests.Chrome
+namespace Tests.Edge
 {
     [TestFixture]
-    public class RegistrationPageTests : BaseTest<ChromeDriver>
+    public class RegistrationPageTests : BaseTest<EdgeDriver>
     {
         static object[] newUserData = {
              new string[] {

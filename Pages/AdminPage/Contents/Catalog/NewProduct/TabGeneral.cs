@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 using System.Collections.Generic;
 
 namespace Pages
@@ -20,9 +21,9 @@ namespace Pages
             return this;
         }
 
-        public TabGeneral EnterDateValidFromValue(string value, WebDriverWait wait)
+        public TabGeneral EnterDateValidFromValue(string value)
         {
-            wait.Until((d) => ElemHelper.IsElementVisible(driver, _dateValidFrom));
+            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _dateValidFrom));
             DateValidFrom.SendKeys(value);
             return this;
         }

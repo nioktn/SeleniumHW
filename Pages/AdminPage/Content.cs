@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace Pages
 {
@@ -18,9 +19,9 @@ namespace Pages
             this.driver = driver;
         }
 
-        public bool HeaderIsPresent(WebDriverWait wait)
+        public bool HeaderIsPresent()
         {
-           return wait.Until((d) => ElemHelper.IsElementVisible(d, _contentHeader));
+            return Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(d, _contentHeader)); 
         }
     }
 }

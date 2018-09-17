@@ -7,19 +7,19 @@ using System.Collections.Generic;
 namespace Tests.Chrome
 {
     [TestFixture]
-    public class MainPageStickers : BaseTest<ChromeDriver>
+    public class MainPageStickersTests : BaseTest<ChromeDriver>
     {
         [Test]
-        public void AllProductsStickerPresence()
+        public void TestAllProductsStickerPresence()
         {
             driver.Url = "http://localhost/litecart/";
             MainPage mainPage = new MainPage(driver);
 
             List<bool> stickersPresenceResults = new List<bool>();
-            var productsList = mainPage.GetAllProducts(wait);
+            var productsList = mainPage.GetAllProducts();
             foreach (var item in productsList)
             {
-                stickersPresenceResults.Add(new ProductCompactView(driver, item).HasOneSticker(wait));
+                stickersPresenceResults.Add(new ProductCompactView(driver, item).HasOneSticker());
             }
 
             int testResult = 1;

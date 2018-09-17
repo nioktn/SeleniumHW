@@ -9,10 +9,10 @@ namespace Tests.Firefox
 
 {
     [TestFixture]
-    public class TestOneFirefox : BaseTest<FirefoxDriver>
+    public class TestOneFirefoxTests : BaseTest<FirefoxDriver>
     {
         [Test]
-        public void TestMethod1()
+        public void TestTestMethod1()
         {
             driver.Url = "http://localhost/litecart/en/";
             LoginSection ls = new LoginSection(driver);
@@ -20,7 +20,7 @@ namespace Tests.Firefox
         }
 
         [Test]
-        public void EnterAdminPage()
+        public void TestEnterAdminPage()
         {
             driver.Url = "http://localhost/litecart/admin/";
             LoginSection loginSection = new LoginSection(driver);

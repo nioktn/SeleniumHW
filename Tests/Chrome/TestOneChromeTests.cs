@@ -1,17 +1,14 @@
-﻿using System;
-using NUnit;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using Pages;
 
 namespace Tests.Chrome
 {
     [TestFixture]
-    public class TestOneChrome : BaseTest<ChromeDriver>
+    public class TestOneChromeTests : BaseTest<ChromeDriver>
     {        
         [Test]
-        public void TestMethod1()
+        public void TestTestMethod1()
         {
             driver.Url = "http://localhost/litecart/en/";
             LoginSection ls = new LoginSection(driver);
@@ -20,7 +17,7 @@ namespace Tests.Chrome
 
 
         [Test]
-        public void EnterAdminPage()
+        public void TestEnterAdminPage()
         {
             driver.Url = "http://localhost/litecart/admin/";
             LoginSection loginSection = new LoginSection(driver);

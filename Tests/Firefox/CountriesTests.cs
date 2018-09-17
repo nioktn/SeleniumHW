@@ -1,13 +1,13 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using Pages;
 using System;
 using System.Collections.Generic;
 
-namespace Tests.Chrome
+namespace Tests.Firefox
 {
     [TestFixture]
-    public class CountriesTests : BaseTest<ChromeDriver>
+    public class CountriesTests : BaseTest<FirefoxDriver>
     {
         LoginSection loginSection;
         [Test]
@@ -22,6 +22,15 @@ namespace Tests.Chrome
             List<string> actualResult = countries.GetCountriesNames();
             List<string> expectedResult = actualResult;
             expectedResult.Sort();
+            foreach (var item in expectedResult)
+            {
+                Console.WriteLine(item);
+            }
+
+            foreach (var item in actualResult)
+            {
+                Console.WriteLine(item);
+            }
             CollectionAssert.AreEqual(expectedResult, actualResult);
             admPage.LogOut();
         }

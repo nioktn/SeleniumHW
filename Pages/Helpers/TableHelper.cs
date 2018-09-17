@@ -6,7 +6,6 @@ namespace Pages
 {
     public class TableHelper
     {
-        private readonly WebDriverWait wait;
         private readonly By _allRows = By.XPath("./tbody/tr");
         private readonly By _headers = By.XPath("./tbody/tr[1]/th");
         private readonly By _cellsOfRow = By.XPath("./td");
@@ -15,16 +14,14 @@ namespace Pages
         public IList<IWebElement> AllRows { get => tableElement.FindElements(_allRows); }
         public IList<IWebElement> Headers { get => tableElement.FindElements(_headers); }
 
-        public TableHelper(IWebDriver driver, By tableLocator, WebDriverWait wait)
+        public TableHelper(IWebDriver driver, By tableLocator)
         {
             this.tableElement = driver.FindElement(tableLocator);
-            this.wait = wait;
         }
 
-        public TableHelper(IWebElement tableElement, WebDriverWait wait)
+        public TableHelper(IWebElement tableElement)
         {
             this.tableElement = tableElement;
-            this.wait = wait;
         }
 
         public IList<IWebElement> GetCellsOfRow(IWebElement rowElement)
@@ -34,12 +31,6 @@ namespace Pages
 
         public IList<IWebElement> GetColumnByIndex(int index)
         {
-            //IList<IWebElement> result = new List<IWebElement>();
-            //foreach (var row in AllRows)
-            //{
-            //    result.Add(GetCellsOfRow(row)[index]);
-            //}
-            //return result;
             string columnLocator = string.Format("./tbody/tr/td[{0}]", index);
             return tableElement.FindElements(By.XPath(columnLocator));
         }
@@ -53,13 +44,6 @@ namespace Pages
                 else index++;
             }
             return GetColumnByIndex(index + 1);
-
-            //IList<IWebElement> result = new List<IWebElement>();
-            //int 
-            //foreach (var row in AllRows)
-            //{
-            //    result.Add(GetC)
-            //}
         }
 
         public IWebElement GetCellByRowIndexColName(int rowIndex, string colName)
