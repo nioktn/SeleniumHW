@@ -10,5 +10,10 @@ namespace Pages
         {
             return new WebDriverWait(driver, time);
         }
+
+        public static WebDriverWait GetInstance(IWebDriver driver, int time = 10)
+        {
+            return new WebDriverWait(driver, TimeSpan.FromSeconds(time));
+        }
     }
 }
