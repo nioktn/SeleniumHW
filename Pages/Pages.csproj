@@ -1,24 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props')" />
-  <Import Project="..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" />
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{276D87F6-9971-40D4-8404-6A817FDCA101}</ProjectGuid>
+    <ProjectGuid>{33DDC274-7329-443C-935F-A2597B01BAAA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tests</RootNamespace>
-    <AssemblyName>Tests</AssemblyName>
+    <RootNamespace>Pages</RootNamespace>
+    <AssemblyName>Pages</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
-    <IsCodedUITest>False</IsCodedUITest>
-    <TestProjectType>UnitTest</TestProjectType>
+    <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -40,25 +33,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.5.9\lib\net45\NLog.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WebDriver, Version=3.14.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.14.0\lib\net45\WebDriver.dll</HintPath>
@@ -68,54 +58,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseTest.cs" />
-    <Compile Include="Chrome\AdminPageItemsTests.cs" />
-    <Compile Include="Chrome\MainPageStickersTests.cs" />
-    <Compile Include="Chrome\ProductPageCompactViewTests.cs" />
-    <Compile Include="Chrome\RemoteTests.cs" />
-    <Compile Include="Chrome\TestFileInputTests.cs" />
-    <Compile Include="Chrome\CountriesTests.cs" />
-    <Compile Include="Chrome\CartTests.cs" />
-    <Compile Include="Chrome\RegistragionPageTest.cs" />
-    <Compile Include="Chrome\TestOneChromeTests.cs" />
-    <Compile Include="Chrome\WindowsTests.cs" />
-    <Compile Include="Edge\AdminPageItems.cs" />
-    <Compile Include="Edge\CartTests.cs" />
-    <Compile Include="Edge\CountriesTests.cs" />
-    <Compile Include="Edge\MainPageStickers.cs" />
-    <Compile Include="Edge\ProductPageCompactViewTest.cs" />
-    <Compile Include="Edge\RegistragionPageTest.cs" />
-    <Compile Include="Edge\TestfileInput.cs" />
-    <Compile Include="Edge\TestOneEdge.cs" />
-    <Compile Include="Edge\WindowsTest.cs" />
-    <Compile Include="Firefox\AdminPageItems.cs" />
-    <Compile Include="Firefox\CartTests.cs" />
-    <Compile Include="Firefox\CountriesTests.cs" />
-    <Compile Include="Firefox\MainPageStickers.cs" />
-    <Compile Include="Firefox\ProductPageCompactViewTest.cs" />
-    <Compile Include="Firefox\RegistragionPageTest.cs" />
-    <Compile Include="Firefox\TestfileInput.cs" />
-    <Compile Include="Firefox\TestOneFirefox.cs" />
-    <Compile Include="Firefox\WindowsTest.cs" />
+    <Compile Include="AdminPage\AdminPage.cs" />
+    <Compile Include="AdminPage\Content.cs" />
+    <Compile Include="AdminPage\Contents\Catalog\NewProduct\TabPrices.cs" />
+    <Compile Include="AdminPage\Contents\Catalog\NewProduct\TabInformation.cs" />
+    <Compile Include="AdminPage\Contents\Catalog\NewProduct\TabGeneral.cs" />
+    <Compile Include="AdminPage\Contents\Catalog\NewProduct\AddNewProduct.cs" />
+    <Compile Include="AdminPage\Contents\Catalog\Catalog.cs" />
+    <Compile Include="AdminPage\Contents\Countries\EditCountry.cs" />
+    <Compile Include="AdminPage\Contents\Countries\Countries.cs" />
+    <Compile Include="AdminPage\Sidebar.cs" />
+    <Compile Include="Helpers\WaitHelper.cs" />
+    <Compile Include="Helpers\TableHelper.cs" />
+    <Compile Include="Helpers\ElemHelper.cs" />
+    <Compile Include="Account\LoggedUserSection.cs" />
+    <Compile Include="IWebElementExtension.cs" />
+    <Compile Include="PageWrapper\CartPage.cs" />
+    <Compile Include="RegisterCustomerPage.cs" />
+    <Compile Include="LoginSection.cs" />
+    <Compile Include="HeaderWrapper.cs" />
+    <Compile Include="PageWrapper\MainPage\MainPage.cs" />
+    <Compile Include="PageWrapper\Product\ProductPage.cs" />
+    <Compile Include="PageWrapper\Product\ProductCompactView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Pages\Pages.csproj">
-      <Project>{33ddc274-7329-443c-935f-a2597b01baaa}</Project>
-      <Name>Pages</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.10.1\build\NUnit.props'))" />
-    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props'))" />
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.IEDriver.3.14.0\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.IEDriver.3.14.0\build\Selenium.WebDriver.IEDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.Firefox.WebDriver.0.21.0\build\Selenium.Firefox.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Firefox.WebDriver.0.21.0\build\Selenium.Firefox.WebDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.42.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.42.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
