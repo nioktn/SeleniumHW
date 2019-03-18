@@ -73,6 +73,16 @@
     <Compile Include="Helpers\ElemHelper.cs" />
     <Compile Include="Account\LoggedUserSection.cs" />
     <Compile Include="IWebElementExtension.cs" />
+    <Compile Include="PageObjects\Footer\Footer.cs" />
+    <Compile Include="PageObjects\Header\CartWrapper.cs" />
+    <Compile Include="PageObjects\Header\Header.cs" />
+    <Compile Include="PageObjects\Header\RegionSection.cs" />
+    <Compile Include="PageObjects\Header\SiteMenu.cs" />
+    <Compile Include="PageObjects\NavigationMenu\CategoriesSection.cs" />
+    <Compile Include="PageObjects\NavigationMenu\LoginSection.cs" />
+    <Compile Include="PageObjects\NavigationMenu\Navigation.cs" />
+    <Compile Include="PageObjects\Page.cs" />
+    <Compile Include="PageObjects\PageObjectBase.cs" />
     <Compile Include="PageWrapper\CartPage.cs" />
     <Compile Include="RegisterCustomerPage.cs" />
     <Compile Include="LoginSection.cs" />
@@ -84,6 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PageObjects\Page\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
