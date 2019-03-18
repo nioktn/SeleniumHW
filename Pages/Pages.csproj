@@ -81,23 +81,28 @@
     <Compile Include="PageObjects\NavigationMenu\CategoriesSection.cs" />
     <Compile Include="PageObjects\NavigationMenu\LoginSection.cs" />
     <Compile Include="PageObjects\NavigationMenu\Navigation.cs" />
-    <Compile Include="PageObjects\Page.cs" />
+    <Compile Include="PageObjects\NavigationMenu\RecentlyViewedSection.cs" />
+    <Compile Include="PageObjects\MainPageContent\CategoryPageContent.cs" />
+    <Compile Include="PageObjects\MainPageContent\ProductPageContent.cs" />
+    <Compile Include="PageObjects\MainPageContent\SubcategoryPageContent.cs" />
+    <Compile Include="PageObjects\MainPageContent\CategoriesPageContent.cs" />
+    <Compile Include="PageObjects\MainPageContent\HomePageContent.cs" />
+    <Compile Include="PageObjects\MainPageContent\PageContent.cs" />
     <Compile Include="PageObjects\PageObjectBase.cs" />
     <Compile Include="PageWrapper\CartPage.cs" />
-    <Compile Include="RegisterCustomerPage.cs" />
+    <Compile Include="PageObjects\RegisterCustomerPage.cs" />
     <Compile Include="LoginSection.cs" />
     <Compile Include="HeaderWrapper.cs" />
     <Compile Include="PageWrapper\MainPage\MainPage.cs" />
     <Compile Include="PageWrapper\Product\ProductPage.cs" />
     <Compile Include="PageWrapper\Product\ProductCompactView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterCustomerPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PageObjects\Page\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
