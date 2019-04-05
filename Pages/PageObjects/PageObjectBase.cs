@@ -34,6 +34,5 @@ namespace Pages.PageObjects
                 return false;
             }
         }
-
     }
 }
