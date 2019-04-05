@@ -14,9 +14,6 @@ namespace Tests.Chrome
             driver.Url = "http://localhost/litecart/";
             MainPage mainPage = new MainPage(driver);
 
-            Header headerInstance = new Header(driver);
-            headerInstance.cartWrapper.WrapperText = "lol";
-
             mainPage.SelectProductByName("Blue Duck")
                 .AddProductToCart()
                 .GoToMainPage()
