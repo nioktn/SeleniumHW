@@ -3,11 +3,12 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
 
-namespace Pages
+namespace Pages.PageObjects
 {
-    public class RegisterCustomerPage1
+    public class RegisterCustomerPage : PageObjectBase
     {
-        private readonly IWebDriver driver;
+        public RegisterCustomerPage(IWebDriver webDriver) : base (webDriver) { }
+
         private readonly By _taxId = By.CssSelector("[name=tax_id]");
         private readonly By _company = By.CssSelector("[name=company]");
         private readonly By _firstname = By.CssSelector("[name=firstname]");
@@ -25,93 +26,89 @@ namespace Pages
         private readonly By _createAccButton = By.CssSelector("[name=create_account]");
         private readonly By _zoneCode = By.CssSelector("select[name=zone_code]");
 
-        public IWebElement TaxId { get => driver.FindElement(_taxId); }
-        public IWebElement Company { get => driver.FindElement(_company); }
-        public IWebElement Firstname { get => driver.FindElement(_firstname); }
-        public IWebElement Lastname { get => driver.FindElement(_lastname); }
-        public IWebElement Address1 { get => driver.FindElement(_address1); }
-        public IWebElement Address2 { get => driver.FindElement(_address2); }
-        public IWebElement Postcode { get => driver.FindElement(_postcode); }
-        public IWebElement City { get => driver.FindElement(_city); }
-        public IWebElement Country { get => driver.FindElement(_country); }
-        public IWebElement Email { get => driver.FindElement(_email); }
-        public IWebElement Phone { get => driver.FindElement(_phone); }
-        public IWebElement Subscription { get => driver.FindElement(_subscription); }
-        public IWebElement Password { get => driver.FindElement(_password); }
-        public IWebElement ConfirmPassword { get => driver.FindElement(_confirmPassword); }
-        public IWebElement CreateAccButton { get => driver.FindElement(_createAccButton); }
-        public IWebElement ZoneCode { get => driver.FindElement(_zoneCode); }
+        public IWebElement TaxId { get => webDriver.FindElement(_taxId); }
+        public IWebElement Company { get => webDriver.FindElement(_company); }
+        public IWebElement Firstname { get => webDriver.FindElement(_firstname); }
+        public IWebElement Lastname { get => webDriver.FindElement(_lastname); }
+        public IWebElement Address1 { get => webDriver.FindElement(_address1); }
+        public IWebElement Address2 { get => webDriver.FindElement(_address2); }
+        public IWebElement Postcode { get => webDriver.FindElement(_postcode); }
+        public IWebElement City { get => webDriver.FindElement(_city); }
+        public IWebElement Country { get => webDriver.FindElement(_country); }
+        public IWebElement Email { get => webDriver.FindElement(_email); }
+        public IWebElement Phone { get => webDriver.FindElement(_phone); }
+        public IWebElement Subscription { get => webDriver.FindElement(_subscription); }
+        public IWebElement Password { get => webDriver.FindElement(_password); }
+        public IWebElement ConfirmPassword { get => webDriver.FindElement(_confirmPassword); }
+        public IWebElement CreateAccButton { get => webDriver.FindElement(_createAccButton); }
+        public IWebElement ZoneCode { get => webDriver.FindElement(_zoneCode); }
 
-        public RegisterCustomerPage1(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
 
-        public RegisterCustomerPage1 EnterFirstName(string firstname)
+        public RegisterCustomerPage EnterFirstName(string firstname)
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _firstname));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _firstname));
             Firstname.SendKeys(firstname);
             return this;
         }
-        public RegisterCustomerPage1 EnterLastName(string lastname)
+        public RegisterCustomerPage EnterLastName(string lastname)
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _lastname));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _lastname));
             Lastname.SendKeys(lastname);
             return this;
         }
-        public RegisterCustomerPage1 EnterMainAddress(string address1)
+        public RegisterCustomerPage EnterMainAddress(string address1)
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _address1));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _address1));
             Address1.SendKeys(address1);
             return this;
         }
-        public RegisterCustomerPage1 EnterCity(string city)
+        public RegisterCustomerPage EnterCity(string city)
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _city));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _city));
             City.SendKeys(city);
             return this;
         }
-        public RegisterCustomerPage1 EnterCountry(string countryName)
+        public RegisterCustomerPage EnterCountry(string countryName)
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _country));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _country));
             ElemHelper.SelectFromDDL(Country, countryName);
             return this;
         }
-        public RegisterCustomerPage1 EnterZoneCode(string zoneName)
+        public RegisterCustomerPage EnterZoneCode(string zoneName)
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ZoneCode.Enabled);
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ZoneCode.Enabled);
             ElemHelper.SelectFromDDLbyValue(ZoneCode, zoneName);
             return this;
         }
-        public RegisterCustomerPage1 EnterPostCode(string postcode)
+        public RegisterCustomerPage EnterPostCode(string postcode)
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _postcode));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _postcode));
             Postcode.SendKeys(postcode);
             return this;
         }
-        public RegisterCustomerPage1 EnterEmail(string email)
+        public RegisterCustomerPage EnterEmail(string email)
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _email));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _email));
             Email.SendKeys(email);
             return this;
         }
-        public RegisterCustomerPage1 EnterPhone(string phone)
+        public RegisterCustomerPage EnterPhone(string phone)
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _phone));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _phone));
             Phone.SendKeys(phone);
             return this;
         }
-        public RegisterCustomerPage1 EnterPassword(string password)
+        public RegisterCustomerPage EnterPassword(string password)
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _password));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _password));
             Password.SendKeys(password);
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _confirmPassword));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _confirmPassword));
             ConfirmPassword.SendKeys(password);
             return this;
         }
-        public RegisterCustomerPage1 SubmitRegistration()
+        public RegisterCustomerPage SubmitRegistration()
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _createAccButton));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _createAccButton));
             CreateAccButton.Click();
             return this;
         }

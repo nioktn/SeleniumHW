@@ -4,6 +4,7 @@ using Pages;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using Pages.PageObjects.NavigationMenu;
 
 namespace Tests.Edge
 {

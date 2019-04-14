@@ -5,6 +5,7 @@ using OpenQA.Selenium.Remote;
 using Pages;
 using System;
 using System.Threading;
+using Pages.PageObjects.NavigationMenu;
 
 namespace Tests.Chrome
 {

@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using Pages;
+using Pages.PageObjects.NavigationMenu;
 
 namespace Tests.Chrome
 {

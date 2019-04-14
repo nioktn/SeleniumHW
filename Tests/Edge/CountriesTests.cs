@@ -3,6 +3,7 @@ using OpenQA.Selenium.Edge;
 using Pages;
 using System;
 using System.Collections.Generic;
+using Pages.PageObjects.NavigationMenu;
 
 namespace Tests.Edge
 {

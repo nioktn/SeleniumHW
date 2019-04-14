@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using Pages;
 using System.Collections.Generic;
+using Pages.PageObjects.NavigationMenu;
 
 namespace Tests.Chrome
 {

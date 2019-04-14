@@ -76,7 +76,6 @@
     <Compile Include="Chrome\TestFileInputTests.cs" />
     <Compile Include="Chrome\CountriesTests.cs" />
     <Compile Include="Chrome\CartTests.cs" />
-    <Compile Include="Chrome\RegistragionPageTest.cs" />
     <Compile Include="Chrome\TestOneChromeTests.cs" />
     <Compile Include="Chrome\WindowsTests.cs" />
     <Compile Include="Edge\AdminPageItems.cs" />
@@ -98,6 +97,8 @@
     <Compile Include="Firefox\TestOneFirefox.cs" />
     <Compile Include="Firefox\WindowsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TC_002_ShoppingCart_Test.cs" />
+    <Compile Include="TC_001_RegistragionPage_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

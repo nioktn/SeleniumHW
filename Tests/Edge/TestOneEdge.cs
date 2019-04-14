@@ -4,6 +4,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using Pages;
+using Pages.PageObjects.NavigationMenu;
 
 namespace Tests.Edge
 {

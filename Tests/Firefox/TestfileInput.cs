@@ -3,6 +3,7 @@ using OpenQA.Selenium.Firefox;
 using Pages;
 using System;
 using System.IO;
+using Pages.PageObjects.NavigationMenu;
 
 namespace Tests.Firefox
 {

@@ -1,15 +1,18 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 using Pages;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Events;
+using Pages.PageObjects;
 using Pages.PageObjects.NavigationMenu;
 
-namespace Tests.Firefox
+namespace Tests
 {
     [TestFixture]
-    public class RegistrationPageTests : BaseTest<FirefoxDriver>
+    public class TC_001_RegistragionPage_Test : BaseTest<ChromeDriver>
     {
         static object[] newUserData = {
              new string[] {
@@ -26,8 +29,9 @@ namespace Tests.Firefox
         };
 
         [Test, TestCaseSource("newUserData")]
-        public void TestRegisterNewUser(string firstname, string lastname, string address1, string postcode, string city, string country, string state, string email, string phone, string password)
+        public void Test_RegisterNewUser(string firstname, string lastname, string address1, string postcode, string city, string country, string state, string email, string phone, string password)
         {
+            Thread.Sleep(1000);
             driver.Url = "http://localhost/litecart/";
             LoginSection loginSection = new LoginSection(driver);
             loginSection.CreateNewUser()
@@ -42,10 +46,32 @@ namespace Tests.Firefox
                 .EnterPhone(phone)
                 .EnterPassword(password)
                 .SubmitRegistration();
+
+            driver.Url = "http://localhost/litecart/admin";
+            loginSection.LogInAdminPage("admin", "admin")
+                .SelectMenuItem(AdminPage.AdminPageMenuItems.Customers)
+                .SelectMenuItem(AdminPage.AdminPageMenuItems.Orders);
+
+            TableHelper th = new TableHelper(driver, By.XPath("//table[@class='dataTable']"));
+            var rows = th.AllRows;
+            var heads = th.Headers.Select(_ => _.Text.ToList());
+            var dateCol = th.GetColumnByName("Date").Select(_ => _.Text).ToList();
+            var edi1 = th.GetCellByRowIndexColName(2, " ").FindElement(By.XPath("//a[@href]/i"));
+            var edit = th.GetCellByRowIndexColName(2, "&nbsp");
+
+            AdminPage adminPage = new AdminPage(driver);
+
+
+            
+            
+            /* relogin
+            Thread.Sleep(1000);
             LoggedUserSection userSection = new LoggedUserSection(driver);
             userSection.LogOut();
             loginSection.LogInStoreUser(email, password);
             userSection.LogOut();
+            Thread.Sleep(1000);
+            */
         }
 
         public string GetRandomEmail()

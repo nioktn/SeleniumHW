@@ -58,20 +58,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminPage\AdminPage.cs" />
-    <Compile Include="AdminPage\Content.cs" />
-    <Compile Include="AdminPage\Contents\Catalog\NewProduct\TabPrices.cs" />
-    <Compile Include="AdminPage\Contents\Catalog\NewProduct\TabInformation.cs" />
-    <Compile Include="AdminPage\Contents\Catalog\NewProduct\TabGeneral.cs" />
-    <Compile Include="AdminPage\Contents\Catalog\NewProduct\AddNewProduct.cs" />
-    <Compile Include="AdminPage\Contents\Catalog\Catalog.cs" />
-    <Compile Include="AdminPage\Contents\Countries\EditCountry.cs" />
-    <Compile Include="AdminPage\Contents\Countries\Countries.cs" />
-    <Compile Include="AdminPage\Sidebar.cs" />
+    <Compile Include="PageObjects\AdminPage\AdminPage.cs" />
+    <Compile Include="PageObjects\AdminPage\Content.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Catalog\NewProduct\TabPrices.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Catalog\NewProduct\TabInformation.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Catalog\NewProduct\TabGeneral.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Catalog\NewProduct\AddNewProduct.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Catalog\Catalog.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Countries\EditCountry.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Countries\Countries.cs" />
+    <Compile Include="PageObjects\AdminPage\Sidebar.cs" />
+    <Compile Include="Helpers\EnumHelpers.cs" />
     <Compile Include="Helpers\WaitHelper.cs" />
     <Compile Include="Helpers\TableHelper.cs" />
     <Compile Include="Helpers\ElemHelper.cs" />
-    <Compile Include="Account\LoggedUserSection.cs" />
     <Compile Include="IWebElementExtension.cs" />
     <Compile Include="Models\NewCustomerModel.cs" />
     <Compile Include="PageObjects\Footer\Footer.cs" />
@@ -92,14 +92,12 @@
     <Compile Include="PageObjects\MainPageContent\PageContent.cs" />
     <Compile Include="PageObjects\PageObjectBase.cs" />
     <Compile Include="PageWrapper\CartPage.cs" />
-    <Compile Include="PageObjects\RegisterCustomerPage.cs" />
-    <Compile Include="LoginSection.cs" />
     <Compile Include="HeaderWrapper.cs" />
     <Compile Include="PageWrapper\MainPage\MainPage.cs" />
     <Compile Include="PageWrapper\Product\ProductPage.cs" />
     <Compile Include="PageWrapper\Product\ProductCompactView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterCustomerPage.cs" />
+    <Compile Include="PageObjects\RegisterCustomerPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
