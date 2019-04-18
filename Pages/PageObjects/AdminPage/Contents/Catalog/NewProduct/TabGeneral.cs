@@ -10,8 +10,8 @@ namespace Pages
         private readonly By _uploadImageField = By.XPath("//input[contains(@name, 'new_images[]')]");
         private readonly By _dateValidFrom = By.CssSelector("[name=date_valid_from]");
 
-        public IWebElement UploadImageField { get => driver.FindElement(_uploadImageField); }
-        public IWebElement DateValidFrom { get => driver.FindElement(_dateValidFrom); }
+        public IWebElement UploadImageField { get => webDriver.FindElement(_uploadImageField); }
+        public IWebElement DateValidFrom { get => webDriver.FindElement(_dateValidFrom); }
 
         public TabGeneral(IWebDriver driver) : base(driver) { }
 
@@ -23,7 +23,7 @@ namespace Pages
 
         public TabGeneral EnterDateValidFromValue(string value)
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _dateValidFrom));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _dateValidFrom));
             DateValidFrom.SendKeys(value);
             return this;
         }

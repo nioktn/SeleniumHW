@@ -29,8 +29,8 @@ namespace Tests
         public void Test_RegisterNewUser(string firstname, string lastname, string address1, string postcode, string city, string country, string state, string email, string phone, string password)
         {
             Thread.Sleep(1000);
-            driver.Url = "http://localhost/litecart/";
-            LoginSection loginSection = new LoginSection(driver);
+            webDriver.Url = "http://localhost/litecart/";
+            LoginSection loginSection = new LoginSection(webDriver);
             loginSection.CreateNewUser()
                 .EnterFirstName(firstname)
                 .EnterLastName(lastname)
@@ -45,7 +45,7 @@ namespace Tests
                 .SubmitRegistration();
 
             Thread.Sleep(1000);
-            LoggedUserSection userSection = new LoggedUserSection(driver);
+            LoggedUserSection userSection = new LoggedUserSection(webDriver);
             userSection.LogOut();
             loginSection.LogInStoreUser(email, password);
             userSection.LogOut();

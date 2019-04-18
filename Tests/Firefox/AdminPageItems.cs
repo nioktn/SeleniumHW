@@ -14,8 +14,8 @@ namespace Tests.Firefox
         [Test]
         public void TestAdminPageClickOnEachMenuItem()
         {
-            driver.Url = "http://localhost/litecart/admin/";
-            loginSection = new LoginSection(driver);
+            webDriver.Url = "http://localhost/litecart/admin/";
+            loginSection = new LoginSection(webDriver);
 
             var admPage = loginSection.LogInAdminPage("admin", "admin");
 

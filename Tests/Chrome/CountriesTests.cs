@@ -14,17 +14,17 @@ namespace Tests.Chrome
         [Test]
         public void TestCountriesAlphabeticOrder()
         {
-            driver.Url = "http://localhost/litecart/admin/";
-            loginSection = new LoginSection(driver);
-            var admPage = loginSection.LogInAdminPage("admin", "admin");
-            driver.Url = "http://localhost/litecart/admin/?app=countries&doc=countries";
+            webDriver.Url = "http://localhost/litecart/admin/";
+            loginSection = new LoginSection(webDriver);
+            var content = loginSection.LogInAdminPage("admin", "admin");
+            webDriver.Url = "http://localhost/litecart/admin/?app=countries&doc=countries";
 
-            Countries countries = new Countries(driver);
+            Countries countries = new Countries(webDriver);
             List<string> actualResult = countries.GetCountriesNames();
             List<string> expectedResult = actualResult;
             expectedResult.Sort();
             CollectionAssert.AreEqual(expectedResult, actualResult);
-            admPage.LogOut();
+            //admPage.LogOut();
         }
 
         static object[] countriesIds = {
@@ -34,12 +34,12 @@ namespace Tests.Chrome
         [Test, TestCaseSource("countriesIds")]
         public void TestUSA_Canada_GeozonesAlphabeticOrderTest(int countryId)
         {
-            driver.Url = "http://localhost/litecart/admin/";
-            loginSection = new LoginSection(driver);
+            webDriver.Url = "http://localhost/litecart/admin/";
+            loginSection = new LoginSection(webDriver);
             var admPage = loginSection.LogInAdminPage("admin", "admin");
-            driver.Url = "http://localhost/litecart/admin/?app=countries&doc=countries";
+            webDriver.Url = "http://localhost/litecart/admin/?app=countries&doc=countries";
 
-            Countries countries = new Countries(driver);
+            Countries countries = new Countries(webDriver);
             List<string> actualResult = countries.OpenCountryById(countryId)
                 .GetGeozonesNames();
             List<string> expectedResult = actualResult;

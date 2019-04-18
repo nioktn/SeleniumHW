@@ -67,12 +67,13 @@
     <Compile Include="PageObjects\AdminPage\Contents\Catalog\Catalog.cs" />
     <Compile Include="PageObjects\AdminPage\Contents\Countries\EditCountry.cs" />
     <Compile Include="PageObjects\AdminPage\Contents\Countries\Countries.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Customers\EditCustomerPage.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Customers\CustomersPage.cs" />
     <Compile Include="PageObjects\AdminPage\Sidebar.cs" />
     <Compile Include="Helpers\EnumHelpers.cs" />
     <Compile Include="Helpers\WaitHelper.cs" />
     <Compile Include="Helpers\TableHelper.cs" />
     <Compile Include="Helpers\ElemHelper.cs" />
-    <Compile Include="IWebElementExtension.cs" />
     <Compile Include="Models\NewCustomerModel.cs" />
     <Compile Include="PageObjects\Footer\Footer.cs" />
     <Compile Include="PageObjects\Header\CartWrapper.cs" />

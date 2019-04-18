@@ -16,23 +16,23 @@ namespace Tests.Chrome
         [Test]
         public void TestExternalLinksOpen()
         {
-            driver.Url = "http://localhost/litecart/admin/";
-            loginSection = new LoginSection(driver);
+            webDriver.Url = "http://localhost/litecart/admin/";
+            loginSection = new LoginSection(webDriver);
             var admPage = loginSection.LogInAdminPage("admin", "admin");
-            driver.Url = "http://localhost/litecart/admin/?app=countries&doc=countries";
-            Countries countries = new Countries(driver);
+            webDriver.Url = "http://localhost/litecart/admin/?app=countries&doc=countries";
+            Countries countries = new Countries(webDriver);
             IList<IWebElement> externalLinks = countries.OpenCountryById(220)
                 .GetAllExternalLinks();
 
-            var oldWindows = driver.WindowHandles;
+            var oldWindows = webDriver.WindowHandles;
             foreach (var link in externalLinks)
             {
                 link.Click();
-                Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => driver.WindowHandles.Count > 1);
-                var newWindow = driver.WindowHandles.Except(oldWindows).First();
-                driver.SwitchTo().Window(newWindow);
-                driver.Close();
-                driver.SwitchTo().Window(oldWindows.First());
+                Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => webDriver.WindowHandles.Count > 1);
+                var newWindow = webDriver.WindowHandles.Except(oldWindows).First();
+                webDriver.SwitchTo().Window(newWindow);
+                webDriver.Close();
+                webDriver.SwitchTo().Window(oldWindows.First());
             }
         }
     }

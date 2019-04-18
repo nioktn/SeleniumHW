@@ -12,14 +12,14 @@ namespace Tests.Chrome
         [Test]
         public void TestAllProductsStickerPresence()
         {
-            driver.Url = "http://localhost/litecart/";
-            MainPage mainPage = new MainPage(driver);
+            webDriver.Url = "http://localhost/litecart/";
+            MainPage mainPage = new MainPage(webDriver);
 
             List<bool> stickersPresenceResults = new List<bool>();
             var productsList = mainPage.GetAllProducts();
             foreach (var item in productsList)
             {
-                stickersPresenceResults.Add(new ProductCompactView(driver, item).HasOneSticker());
+                stickersPresenceResults.Add(new ProductCompactView(webDriver, item).HasOneSticker());
             }
 
             int testResult = 1;

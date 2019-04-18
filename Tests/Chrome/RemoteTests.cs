@@ -25,9 +25,9 @@ namespace Tests.Chrome
             //var chromeOptions = new ChromeOptions();
             remoteDriver.Url = "http://localhost/litecart/admin/";
             Thread.Sleep(30000);
-            Wait.GetInstance(driver).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//")));
-            Wait.GetInstance(driver, 15).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//")));
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//")));
+            Wait.GetInstance(webDriver).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//")));
+            Wait.GetInstance(webDriver, 15).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//")));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//")));
             //loginSection = new LoginSection(driver);
 
             //var admPage = loginSection.LogInAdminPage("admin", "admin");

@@ -19,7 +19,7 @@ namespace Pages.PageObjects
             new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout)).Until(ElementToBeClickable(By.XPath(xpathLocator)));
         public IWebElement WaitForElementIsVisible(string xpathLocator, int timeout = defaultTimeout) =>
             new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout)).Until(ElementIsVisible(By.XPath(xpathLocator)));
-        public IWebElement WaitFromEelmentExists(string xpathLocator, int timeout = defaultTimeout) =>
+        public IWebElement WaitForElementExists(string xpathLocator, int timeout = defaultTimeout) =>
             new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout)).Until(ElementExists(By.XPath(xpathLocator)));
 
         public bool WaitForBooleanCondition(Func<bool> conditionFunc, int timeout = defaultTimeout)

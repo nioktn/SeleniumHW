@@ -8,7 +8,7 @@ namespace Tests
 {
     public class BaseTest<T> where T : IWebDriver, new()
     {
-        protected IWebDriver driver;
+        protected IWebDriver webDriver;
 
         [OneTimeSetUp]
         public virtual void FirstInitialize()
@@ -17,12 +17,12 @@ namespace Tests
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.AddArgument("--start-maximized");
-                driver = new ChromeDriver(chromeOptions);
+                webDriver = new ChromeDriver(chromeOptions);
             }
             else
             {
-                driver = new T();
-                driver.Manage().Window.Maximize();
+                webDriver = new T();
+                webDriver.Manage().Window.Maximize();
             }
         }
 
@@ -41,7 +41,7 @@ namespace Tests
         [OneTimeTearDown]
         public virtual void LastCleanUp()
         {
-            driver.Quit();
+            webDriver.Quit();
         }
     }
 }

@@ -10,16 +10,16 @@ namespace Pages
         private readonly By _addNewProduct = By.XPath("//*[contains(text(),'Add New Product')]");
         private readonly By _addNewCategory = By.XPath("//*[contains(text(),'Add New Category')]");
 
-        public IWebElement CatalogTable { get => driver.FindElement(_catalogTable); }
-        public IWebElement AddNewProduct { get => driver.FindElement(_addNewProduct); }
-        public IWebElement AddNewCategory { get => driver.FindElement(_addNewCategory); }
+        public IWebElement CatalogTable { get => webDriver.FindElement(_catalogTable); }
+        public IWebElement AddNewProduct { get => webDriver.FindElement(_addNewProduct); }
+        public IWebElement AddNewCategory { get => webDriver.FindElement(_addNewCategory); }
 
         public Catalog(IWebDriver driver) : base(driver) { }
 
         public AddNewProduct OpenProductAddingPage()
         {
             AddNewProduct.Click();
-            return new AddNewProduct(driver);
+            return new AddNewProduct(webDriver);
         }
     }
 }

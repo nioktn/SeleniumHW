@@ -11,8 +11,8 @@ namespace Tests.Chrome
         [Test]
         public void TestCartAddDeleteProducts()
         {
-            driver.Url = "http://localhost/litecart/";
-            MainPage mainPage = new MainPage(driver);
+            webDriver.Url = "http://localhost/litecart/";
+            MainPage mainPage = new MainPage(webDriver);
 
             mainPage.SelectProductByName("Blue Duck")
                 .AddProductToCart()

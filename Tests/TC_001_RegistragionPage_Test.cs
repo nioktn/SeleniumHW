@@ -8,6 +8,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Events;
 using Pages.PageObjects;
 using Pages.PageObjects.NavigationMenu;
+using Pages.PageObjects.AdminPage.Contents.Customers;
 
 namespace Tests
 {
@@ -32,8 +33,8 @@ namespace Tests
         public void Test_RegisterNewUser(string firstname, string lastname, string address1, string postcode, string city, string country, string state, string email, string phone, string password)
         {
             Thread.Sleep(1000);
-            driver.Url = "http://localhost/litecart/";
-            LoginSection loginSection = new LoginSection(driver);
+            webDriver.Url = "http://localhost/litecart/";
+            LoginSection loginSection = new LoginSection(webDriver);
             loginSection.CreateNewUser()
                 .EnterFirstName(firstname)
                 .EnterLastName(lastname)
@@ -47,23 +48,30 @@ namespace Tests
                 .EnterPassword(password)
                 .SubmitRegistration();
 
-            driver.Url = "http://localhost/litecart/admin";
-            loginSection.LogInAdminPage("admin", "admin")
-                .SelectMenuItem(AdminPage.AdminPageMenuItems.Customers)
-                .SelectMenuItem(AdminPage.AdminPageMenuItems.Orders);
+            webDriver.Url = "http://localhost/litecart/admin";
+            var admContent = loginSection.LogInAdminPage("admin", "admin");
 
-            TableHelper th = new TableHelper(driver, By.XPath("//table[@class='dataTable']"));
-            var rows = th.AllRows;
-            var heads = th.Headers.Select(_ => _.Text.ToList());
-            var dateCol = th.GetColumnByName("Date").Select(_ => _.Text).ToList();
-            var edi1 = th.GetCellByRowIndexColName(2, " ").FindElement(By.XPath("//a[@href]/i"));
-            var edit = th.GetCellByRowIndexColName(2, "&nbsp");
+            admContent.SelectMenuItem(Content.AdminPageMenuItems.Customers);
 
-            AdminPage adminPage = new AdminPage(driver);
+            CustomersPage customersPage = new CustomersPage(webDriver);
+            TableHelper th = new TableHelper(customersPage.CustomersTable);
+
+            var nameColumnRows = th.GetColumnByName("Name").ToList();
+            bool isNewCustomerPresentInTable = nameColumnRows.Any(entry => entry.Text.Contains(firstname) && entry.Text.Contains(lastname));
+
+            Assert.IsTrue(isNewCustomerPresentInTable);
+
+                admContent.OpenCustomerEditorPage(firstname)
+                    .DeleteCustomer();
 
 
-            
-            
+            // Remove new customer
+
+            // AdminPage adminPage = new AdminPage(driver);
+
+
+
+
             /* relogin
             Thread.Sleep(1000);
             LoggedUserSection userSection = new LoggedUserSection(driver);

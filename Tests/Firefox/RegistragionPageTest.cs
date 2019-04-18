@@ -28,8 +28,8 @@ namespace Tests.Firefox
         [Test, TestCaseSource("newUserData")]
         public void TestRegisterNewUser(string firstname, string lastname, string address1, string postcode, string city, string country, string state, string email, string phone, string password)
         {
-            driver.Url = "http://localhost/litecart/";
-            LoginSection loginSection = new LoginSection(driver);
+            webDriver.Url = "http://localhost/litecart/";
+            LoginSection loginSection = new LoginSection(webDriver);
             loginSection.CreateNewUser()
                 .EnterFirstName(firstname)
                 .EnterLastName(lastname)
@@ -42,7 +42,7 @@ namespace Tests.Firefox
                 .EnterPhone(phone)
                 .EnterPassword(password)
                 .SubmitRegistration();
-            LoggedUserSection userSection = new LoggedUserSection(driver);
+            LoggedUserSection userSection = new LoggedUserSection(webDriver);
             userSection.LogOut();
             loginSection.LogInStoreUser(email, password);
             userSection.LogOut();

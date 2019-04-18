@@ -14,8 +14,8 @@ namespace Tests.Edge
         [Test]
         public void TestTestMethod1()
         {
-            driver.Url = "https://www.google.com/";
-            IWebElement searchField = driver.FindElement(By.Id("lst-ib"));
+            webDriver.Url = "https://www.google.com/";
+            IWebElement searchField = webDriver.FindElement(By.Id("lst-ib"));
             searchField.SendKeys("hi there");
             searchField.SendKeys(Keys.Enter);
         }
@@ -23,8 +23,8 @@ namespace Tests.Edge
         [Test]
         public void TestEnterAdminPage()
         {
-            driver.Url = "http://localhost/litecart/admin/";
-            LoginSection loginSection = new LoginSection(driver);
+            webDriver.Url = "http://localhost/litecart/admin/";
+            LoginSection loginSection = new LoginSection(webDriver);
             loginSection.LogInAdminPage("admin", "admin");
         }
 
@@ -32,7 +32,7 @@ namespace Tests.Edge
         [OneTimeTearDown]
         public override void LastCleanUp()
         {
-            driver.Quit();
+            webDriver.Quit();
         }
     }
 }

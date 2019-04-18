@@ -10,16 +10,16 @@ namespace Pages
         private readonly By _tabInformation = By.XPath("//*[contains(@href,'#tab-information')]");
         private readonly By _tabPrices = By.XPath("//*[contains(@href,'#tab-prices')]");
 
-        public IWebElement TabGeneral { get => driver.FindElement(_tabGeneral); }
-        public IWebElement TabInformation { get => driver.FindElement(_tabInformation); }
-        public IWebElement TabPrices { get => driver.FindElement(_tabPrices); }
+        public IWebElement TabGeneral { get => webDriver.FindElement(_tabGeneral); }
+        public IWebElement TabInformation { get => webDriver.FindElement(_tabInformation); }
+        public IWebElement TabPrices { get => webDriver.FindElement(_tabPrices); }
 
         public AddNewProduct(IWebDriver driver) : base(driver) { }
 
         public TabGeneral OpenGeneralTab()
         {
             TabGeneral.Click();
-            return new TabGeneral(driver);
+            return new TabGeneral(webDriver);
         }
     }
 }

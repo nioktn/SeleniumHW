@@ -13,11 +13,11 @@ namespace Tests.Chrome
         [Test]
         public void TestTestInputFile()
         {
-            driver.Url = "http://localhost/litecart/admin/";
-            LoginSection loginSection = new LoginSection(driver);
+            webDriver.Url = "http://localhost/litecart/admin/";
+            LoginSection loginSection = new LoginSection(webDriver);
             loginSection.LogInAdminPage("admin", "admin")
                 .SelectMenuItem("Catalog");
-            Catalog catalog = new Catalog(driver);
+            Catalog catalog = new Catalog(webDriver);
 
             string imagePath = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + @"..\..\src\images\linux.png");
             catalog.OpenProductAddingPage()

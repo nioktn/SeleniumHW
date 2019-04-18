@@ -29,12 +29,12 @@ namespace Pages.PageObjects.NavigationMenu
         public IWebElement LostPassButton => webDriver.FindElement(_lostPassButton); 
         public IWebElement RegisterButton => webDriver.FindElement(_registerButton); 
 
-        public AdminPage LogInAdminPage(string username, string password)
+        public Content LogInAdminPage(string username, string password)
         {
             UsernameField.SendKeys(username);
             PassField.SendKeys(password);
             LoginButton.Click();
-            return new AdminPage(webDriver);
+            return new Content(webDriver);
         }
 
         public void LogInStoreUser(string email, string password)

@@ -18,11 +18,11 @@ namespace Tests.Edge
         [Test]
         public void TestMainPageCompactViewAspectsCompare()
         {
-            driver.Url = "http://localhost/litecart/";
-            mainPage = new MainPage(driver);
+            webDriver.Url = "http://localhost/litecart/";
+            mainPage = new MainPage(webDriver);
             firstCampaignProduct = mainPage.GetCampaignsProducts()[0];
-            compactView = new ProductCompactView(driver, firstCampaignProduct);
-            productPage = new ProductPage(driver);
+            compactView = new ProductCompactView(webDriver, firstCampaignProduct);
+            productPage = new ProductPage(webDriver);
 
             List<string> compactViewValues = new List<string>();
             compactViewValues.Add(compactView.Name.Text);

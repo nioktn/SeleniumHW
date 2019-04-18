@@ -6,7 +6,7 @@ namespace Pages
 {
     public class TableHelper
     {
-        private readonly By _allRows = By.XPath("./tbody/tr");
+        private readonly By _allRows = By.XPath("/descendant::tr[@class='row'] ");
         private readonly By _headers = By.XPath("./tbody/tr[1]/th");
         private readonly By _cellsOfRow = By.XPath("./td");
 
@@ -23,7 +23,7 @@ namespace Pages
         {
             this.tableElement = tableElement;
         }
-
+        
         public IList<IWebElement> GetCellsOfRow(IWebElement rowElement)
         {
             return rowElement.FindElements(_cellsOfRow);

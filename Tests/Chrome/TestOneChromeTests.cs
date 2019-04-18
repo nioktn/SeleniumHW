@@ -11,8 +11,8 @@ namespace Tests.Chrome
         [Test]
         public void TestTestMethod1()
         {
-            driver.Url = "http://localhost/litecart/en/";
-            LoginSection ls = new LoginSection(driver);
+            webDriver.Url = "http://localhost/litecart/en/";
+            LoginSection ls = new LoginSection(webDriver);
             ls.LogInStoreUser("test@gmail.com", "testpassword1");
         }
 
@@ -20,8 +20,8 @@ namespace Tests.Chrome
         [Test]
         public void TestEnterAdminPage()
         {
-            driver.Url = "http://localhost/litecart/admin/";
-            LoginSection loginSection = new LoginSection(driver);
+            webDriver.Url = "http://localhost/litecart/admin/";
+            LoginSection loginSection = new LoginSection(webDriver);
             loginSection.LogInAdminPage("admin", "admin");
         }
     }

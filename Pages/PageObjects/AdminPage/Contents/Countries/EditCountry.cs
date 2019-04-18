@@ -10,14 +10,14 @@ namespace Pages
         private readonly By _geozonesTable = By.CssSelector("#table-zones");
         private readonly By _externalLinks = By.XPath("//*[contains(@class, 'external-link')]");
 
-        public IWebElement GeozonesTable { get => driver.FindElement(_geozonesTable); }
-        public IList<IWebElement> ExternalLinks { get => driver.FindElements(_externalLinks); }
+        public IWebElement GeozonesTable { get => webDriver.FindElement(_geozonesTable); }
+        public IList<IWebElement> ExternalLinks { get => webDriver.FindElements(_externalLinks); }
 
         public EditCountry(IWebDriver driver) : base(driver) { }
 
         public List<string> GetGeozonesNames()
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(driver, _geozonesTable));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _geozonesTable));
             TableHelper table = new TableHelper(GeozonesTable);
             List<string> countriesNames = new List<string>();
             foreach (var item in table.GetColumnByName("Name"))
@@ -29,7 +29,7 @@ namespace Pages
 
         public IList<IWebElement> GetAllExternalLinks()
         {
-            Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.VisibilityOfAllElementsLocatedBy(_externalLinks));
+            Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.VisibilityOfAllElementsLocatedBy(_externalLinks));
             return ExternalLinks;
         }
     }
