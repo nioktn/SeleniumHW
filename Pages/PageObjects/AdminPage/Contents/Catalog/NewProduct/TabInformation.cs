@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Pages
 {
-    public class TabInformation : AddNewProduct
+    public class TabInformation : AddEditProduct
     {
         public TabInformation(IWebDriver driver) : base(driver) { }
 

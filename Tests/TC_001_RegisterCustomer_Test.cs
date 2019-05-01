@@ -1,20 +1,20 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using Pages;
+using Pages.PageObjects.AdminPage.Contents.Customers;
+using Pages.PageObjects.NavigationMenu;
 using System;
 using System.Linq;
 using System.Threading;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Events;
-using Pages.PageObjects;
-using Pages.PageObjects.NavigationMenu;
-using Pages.PageObjects.AdminPage.Contents.Customers;
 
 namespace Tests
 {
     [TestFixture]
-    public class TC_001_RegistragionPage_Test : BaseTest<ChromeDriver>
+    public class TC_001_RegisterCustomer_Test : BaseTest<ChromeDriver>
     {
+        private Content adminContent;
+        private LoginSection loginSection;
+
         static object[] newUserData = {
              new string[] {
                  "Firstname",
@@ -34,7 +34,7 @@ namespace Tests
         {
             Thread.Sleep(1000);
             webDriver.Url = "http://localhost/litecart/";
-            LoginSection loginSection = new LoginSection(webDriver);
+            loginSection = new LoginSection(webDriver);
             loginSection.CreateNewUser()
                 .EnterFirstName(firstname)
                 .EnterLastName(lastname)
@@ -49,9 +49,9 @@ namespace Tests
                 .SubmitRegistration();
 
             webDriver.Url = "http://localhost/litecart/admin";
-            var admContent = loginSection.LogInAdminPage("admin", "admin");
+            adminContent = loginSection.LogInAdminPage("admin", "admin");
 
-            admContent.SelectMenuItem(Content.AdminPageMenuItems.Customers);
+            adminContent.SelectMenuItem(Content.AdminPageMenuItems.Customers);
 
             CustomersPage customersPage = new CustomersPage(webDriver);
             TableHelper th = new TableHelper(customersPage.CustomersTable);
@@ -59,27 +59,11 @@ namespace Tests
             var nameColumnRows = th.GetColumnByName("Name").ToList();
             bool isNewCustomerPresentInTable = nameColumnRows.Any(entry => entry.Text.Contains(firstname) && entry.Text.Contains(lastname));
 
-            Assert.IsTrue(isNewCustomerPresentInTable);
+            Assert.IsTrue(isNewCustomerPresentInTable, "New customer is not preset in customers table");
 
-                admContent.OpenCustomerEditorPage(firstname)
-                    .DeleteCustomer();
-
-
-            // Remove new customer
-
-            // AdminPage adminPage = new AdminPage(driver);
-
-
-
-
-            /* relogin
-            Thread.Sleep(1000);
-            LoggedUserSection userSection = new LoggedUserSection(driver);
-            userSection.LogOut();
-            loginSection.LogInStoreUser(email, password);
-            userSection.LogOut();
-            Thread.Sleep(1000);
-            */
+            // Delete new customer after test is passed
+            adminContent.OpenCustomerEditorPage(firstname)
+                .DeleteCustomer();
         }
 
         public string GetRandomEmail()

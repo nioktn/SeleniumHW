@@ -98,7 +98,9 @@
     <Compile Include="Firefox\WindowsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TC_002_ShoppingCart_Test.cs" />
-    <Compile Include="TC_001_RegistragionPage_Test.cs" />
+    <Compile Include="TC_004_EnablingProduct_Test.cs" />
+    <Compile Include="TC_003_AddNewProduct_Test.cs" />
+    <Compile Include="TC_001_RegisterCustomer_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

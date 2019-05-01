@@ -2,10 +2,11 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
+using Pages.PageObjects;
 
 namespace Pages
 {
-    public class HeaderWrapper
+    public class HeaderWrapper : PageObjectBase
     {
         protected readonly IWebDriver driver;
         protected readonly By _cartSection = By.CssSelector("#cart");
@@ -19,7 +20,7 @@ namespace Pages
         public IWebElement CartCheckout { get => driver.FindElement(_cartCheckout); }
         public IWebElement HomeButton { get => driver.FindElement(_homeButton); }
 
-        public HeaderWrapper(IWebDriver driver)
+        public HeaderWrapper(IWebDriver driver) : base (driver)
         {
             this.driver = driver;
         }

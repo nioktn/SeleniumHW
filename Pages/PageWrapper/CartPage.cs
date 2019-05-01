@@ -12,12 +12,15 @@ namespace Pages
         //private readonly By _updateCartItem = By.CssSelector("[name=update_cart_item]");
         private readonly By _shortcutCartItems = By.CssSelector("ul.shortcuts > li.shortcut");
         private readonly By _cartItems = By.CssSelector("ul.items > li.item");
+        private const string _productNamePath = "//a[@href]/strong";
+        private const string _emptyCartMessagePath = "//p/em[text()='There are no items in your cart.']";
 
         //public IWebElement RemoveCartItemButton { get => driver.FindElement(_removeCartItemButton); }
         //public IWebElement UpdateCartItem { get => driver.FindElement(_updateCartItem); }
         public IList<IWebElement> ShortcutCartItems { get => driver.FindElements(_shortcutCartItems); }
         public IList<IWebElement> CartItems { get => driver.FindElements(_cartItems); }
         public IWebElement OrderSummaryTable { get => driver.FindElement(_orderSummaryTable); }
+        public string ProductName => WaitForElementExists(_productNamePath).Text.Trim();
 
         public CartPage(IWebDriver driver) : base(driver) { }
 
@@ -32,6 +35,13 @@ namespace Pages
             Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.StalenessOf(OrderSummaryTable));
             if (index != 0) Wait.GetInstance(driver, TimeSpan.FromSeconds(10)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(_orderSummaryTable));
             return this;
+        }
+
+
+        public bool IsCartEmpty()
+        {
+            WaitForElementExists(_emptyCartMessagePath);
+            return true;
         }
 
         public CartPage RemoveAllCartItems()

@@ -44,16 +44,13 @@ namespace Pages
             WaitForElementExists(_menuItems);
             return MenuItems;
         }
-
+        
         public void SelectMenuItem(string itemName)
         {
             WaitForElementExists(_menuItems);
             string locatorStr = string.Format("//*[.='{0}']/ancestor::a", itemName);
             webDriver.FindElement(By.XPath(locatorStr)).Click();
         }
-
-
-
 
         public IList<IWebElement> GetSubMenuItems()
         {

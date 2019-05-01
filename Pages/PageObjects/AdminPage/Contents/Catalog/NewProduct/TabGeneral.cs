@@ -5,19 +5,32 @@ using System.Collections.Generic;
 
 namespace Pages
 {
-    public class TabGeneral : AddNewProduct
+    public class TabGeneral : AddEditProduct
     {
         private readonly By _uploadImageField = By.XPath("//input[contains(@name, 'new_images[]')]");
         private readonly By _dateValidFrom = By.CssSelector("[name=date_valid_from]");
+        private const string _nameInputLocator = "//input[@name='name[en]' and @type='text']";
 
         public IWebElement UploadImageField { get => webDriver.FindElement(_uploadImageField); }
         public IWebElement DateValidFrom { get => webDriver.FindElement(_dateValidFrom); }
-
+        public IWebElement NameInput => WaitForElementExists(_nameInputLocator);
+        
         public TabGeneral(IWebDriver driver) : base(driver) { }
 
         public TabGeneral UploadProductImage(string path)
         {
             UploadImageField.SendKeys(path);
+            return this;
+        }
+
+        public bool IsGeneralTabOpened()
+        {
+            return WaitForElementIsVisible(_nameInputLocator).Displayed;
+        }
+
+        public TabGeneral FillNameInput(string name)
+        {
+            NameInput.SendKeys(name);
             return this;
         }
 

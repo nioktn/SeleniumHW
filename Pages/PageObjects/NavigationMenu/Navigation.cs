@@ -12,10 +12,16 @@ namespace Pages.PageObjects.NavigationMenu
         protected const string NavigationMenuSectionPath = "//aside[@id='navigation']";
         protected const string SearchBoxPath = "//div[@class='input-wrapper']/input[@type='search']";
 
-        protected IWebElement searchBoxElement => WaitForElementIsClickable(SearchBoxPath);
+        public IWebElement searchBoxElement => WaitForElementIsClickable(SearchBoxPath);
 
         public Navigation(IWebDriver webDriver) : base (webDriver)
         {
+        }
+
+        public void ExequteSearchQuery(string searchQuery)
+        {
+            searchBoxElement.SendKeys(searchQuery);
+            searchBoxElement.SendKeys(Keys.Enter);
         }
     }
 }
