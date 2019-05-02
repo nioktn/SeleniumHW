@@ -16,7 +16,7 @@ namespace Pages
         public IWebElement AddNewCategory { get => webDriver.FindElement(_addNewCategory); }
 
         public Catalog(IWebDriver driver) : base(driver) { }
-        
+
         public bool IsCatalogPageOpened()
         {
             return WaitForElementIsVisible(_addNewProduct).Displayed;
@@ -28,11 +28,22 @@ namespace Pages
             return new AddEditProduct(webDriver);
         }
 
+        public void ClickOnTableEntry(string entryName)
+        {
+            TableHelper th = new TableHelper(CatalogTable);
+            var nameColumnRows = th.GetColumnByName("Name").ToList();
+            var entr = nameColumnRows.First(entry => entry.Text.Contains(entryName))
+                .FindElement(By.XPath($"/descendant::a[contains(., '{entryName}')]"));
+            entr.Click();
+        }
+
         public AddEditProduct OpenProductEditor(string productName)
         {
             TableHelper th = new TableHelper(CatalogTable);
             var nameColumnRows = th.GetColumnByName("Name").ToList();
-            nameColumnRows.First(entry => entry.Text.Contains(productName)).Click();
+            var entr = nameColumnRows.First(entry => entry.Text.Contains(productName))
+                .FindElement(By.XPath($"/descendant::a[contains(., '{productName}')]"));
+            entr.Click();
             return new AddEditProduct(webDriver);
         }
     }

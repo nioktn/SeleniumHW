@@ -63,7 +63,7 @@
     <Compile Include="PageObjects\AdminPage\Contents\Catalog\NewProduct\TabPrices.cs" />
     <Compile Include="PageObjects\AdminPage\Contents\Catalog\NewProduct\TabInformation.cs" />
     <Compile Include="PageObjects\AdminPage\Contents\Catalog\NewProduct\TabGeneral.cs" />
-    <Compile Include="PageObjects\AdminPage\Contents\Catalog\NewProduct\AddNewProduct.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Catalog\NewProduct\AddEditProduct.cs" />
     <Compile Include="PageObjects\AdminPage\Contents\Catalog\Catalog.cs" />
     <Compile Include="PageObjects\AdminPage\Contents\Countries\EditCountry.cs" />
     <Compile Include="PageObjects\AdminPage\Contents\Countries\Countries.cs" />

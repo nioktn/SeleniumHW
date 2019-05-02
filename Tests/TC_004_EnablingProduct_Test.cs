@@ -10,55 +10,79 @@ namespace Tests
     [TestFixture]
     public class TC_004_EnablingProduct_Test : BaseTest<ChromeDriver>
     {
-        private const string NewProductName = "NewProduct_TestName_1";
+        private const string ProductName = "Red Duck";
         private LoginSection loginSection;
+        private LoggedUserSection loggedUserSection;
+        private Navigation navigationSeciton;
+        private ProductPage productPage;
         private Sidebar adminSidebar;
+        private Content adminContent;
+        private AddEditProduct addEditProductPage;
+        private TabGeneral generalTab;
         private Catalog catalogContent;
-        private AddEditProduct newProductPage;
 
         [Test]
-        public void Test_AddDeleteProduct()
+        public void Test_DisableEnableProduct()
         {
             Thread.Sleep(1000);
-            webDriver.Url = "http://localhost/litecart/admin";
+            //Navigate to main page
+            webDriver.Url = "http://localhost/litecart/";
             loginSection = new LoginSection(webDriver);
-            loginSection.LogInAdminPage("admin", "admin");
 
-            Thread.Sleep(1000);
+            // LogIn as a registered user
+            loginSection.LogInStoreUser("user@email.com", "password");
+
+            // Search for product
+            navigationSeciton = new Navigation(webDriver);
+            navigationSeciton.ExequteSearchQuery("Red Duck");
+            productPage = new ProductPage(webDriver);
+            Assert.AreEqual("Red Duck", productPage.ProductName, $"Product page with name \"{ProductName}\" isn't found");
+            loggedUserSection = new LoggedUserSection(webDriver);
+            loggedUserSection.Logout.Click();
+
+            // Navigate to Admin page
+            webDriver.Url = "http://localhost/litecart/admin";
+
+            // LogIn as admin
+            loginSection.LogInAdminPage("admin", "admin");
             adminSidebar = new Sidebar(webDriver);
+
+            // Navigate to product editor
             adminSidebar.SelectMenuItem("Catalog");
             catalogContent = new Catalog(webDriver);
-            Assert.IsTrue(catalogContent.IsCatalogPageOpened(), "Catalog page is not opened");
+            catalogContent.ClickOnTableEntry("Rubber Ducks");
+            addEditProductPage = catalogContent.OpenProductEditor(ProductName);
+            generalTab = new TabGeneral(webDriver);
+            Assert.AreEqual(generalTab.ProductNameValue(), ProductName, $"Editor page for product with name \"{ProductName}\" isn't opened");
 
-            Thread.Sleep(1000);
-            newProductPage = catalogContent.OpenProductAddingPage();
-            var generalTab = newProductPage.OpenGeneralTab();
-            Assert.IsTrue(generalTab.IsGeneralTabOpened(), "General tab is not opened");
-            generalTab.FillNameInput(NewProductName);
+            // Disable product
+            generalTab.DisableProduct();
+            generalTab.SaveNewProduct();
 
-            Thread.Sleep(1000);
-            var pricesTab = newProductPage.OpenPricesTab();
-            Assert.IsTrue(pricesTab.IsPricesTabOpened(), "Prices tab is not opened");
-            pricesTab.FillPurchasePrice("100")
-                .SelectPurchaseCurrency(TabPrices.CurrencyOptions.USD)
-                .FillGrossPriceUsd("150")
-                .FillGrossPriceEur("135");
-            newProductPage.SaveNewProduct();
-            Assert.IsTrue(catalogContent.IsCatalogPageOpened(), "Catalog page is not opened");
+            // Navigate to main page
+            webDriver.Url = "http://localhost/litecart/";
+            loginSection = new LoginSection(webDriver);
 
-            Thread.Sleep(1000);
-            TableHelper th = new TableHelper(catalogContent.CatalogTable);
-            var nameColumnRows = th.GetColumnByName("Name").ToList();
-            bool isNewProductPresentInTable = nameColumnRows.Any(entry => entry.Text.Contains(NewProductName));
-            Assert.IsTrue(isNewProductPresentInTable, "New product is not present in catalog table");
+            // LogIn as a registered user
+            loginSection.LogInStoreUser("user@email.com", "password");
 
-            Thread.Sleep(1000);
-            catalogContent.OpenProductEditor(NewProductName)
-                .DeleteProduct();
-            th = new TableHelper(catalogContent.CatalogTable);
-            nameColumnRows = th.GetColumnByName("Name").ToList();
-            isNewProductPresentInTable = nameColumnRows.Any(entry => entry.Text.Contains(NewProductName));
-            Assert.IsFalse(isNewProductPresentInTable, "New product is not deleted");
+            // Search for product
+            navigationSeciton = new Navigation(webDriver);
+            navigationSeciton.ExequteSearchQuery("Red Duck");
+            productPage = new ProductPage(webDriver);
+            Assert.IsFalse(productPage.IsProductPageOpened());
+
+            // Navigate to product editor
+            adminSidebar.SelectMenuItem("Catalog");
+            catalogContent = new Catalog(webDriver);
+            catalogContent.SelectMenuItem("Rubber Ducks");
+            addEditProductPage = catalogContent.OpenProductEditor(ProductName);
+            generalTab = new TabGeneral(webDriver);
+            Assert.AreEqual(generalTab.NameInput, ProductName, $"Editor page for product with name \"{ProductName}\" isn't opened");
+
+            // Enable product after test is passed
+            generalTab.EnableProduct();
+            generalTab.SaveNewProduct();
         }
     }
 }

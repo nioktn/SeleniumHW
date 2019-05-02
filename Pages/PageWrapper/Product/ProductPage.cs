@@ -29,7 +29,12 @@ namespace Pages
 
         public ProductPage(IWebDriver driver) : base(driver) { }
 
-        public void AddToCart() => WaitForElementIsClickable(_addToCartBtnPath).Click(); 
+        public void AddToCart() => WaitForElementIsClickable(_addToCartBtnPath).Click();
+
+        public bool IsProductPageOpened()
+        {
+            return WaitForBooleanCondition(() => WaitForElementIsVisible(_productNameLocator, 1).Displayed, 1);
+        }
 
         public ProductPage AddProductToCart()
         {

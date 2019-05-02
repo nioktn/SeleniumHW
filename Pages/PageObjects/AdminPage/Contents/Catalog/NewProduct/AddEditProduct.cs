@@ -11,6 +11,8 @@ namespace Pages
         private const string _saveButtonLocator = "//button[@type='submit' and @name='save']";
         private const string _cancelButtonLocator = "//button[@type='button' and @name='cancel']";
         private const string _deleteButtonLocator = "//button[@type='submit' and @name='delete']";
+        private const string _enabledRadioButtonLocator = "//label[contains(., 'Enabled')]/input";
+        private const string _disabledRadioButtonLocator = "//label[contains(., 'Disabled')]/input";
         private readonly By _tabPrices = By.XPath("//*[contains(@href,'#tab-prices')]");
 
         public IWebElement TabGeneral { get => WaitForElementIsClickable(_tabGeneralLocator); }
@@ -24,6 +26,8 @@ namespace Pages
             TabGeneral.Click();
             return new TabGeneral(webDriver);
         }
+        public void EnableProduct() => WaitForElementIsClickable(_enabledRadioButtonLocator).Click();
+        public void DisableProduct() => WaitForElementIsClickable(_disabledRadioButtonLocator).Click();
 
         public TabPrices OpenPricesTab()
         {

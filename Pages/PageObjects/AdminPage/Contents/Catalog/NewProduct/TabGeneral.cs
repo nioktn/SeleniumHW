@@ -14,6 +14,8 @@ namespace Pages
         public IWebElement UploadImageField { get => webDriver.FindElement(_uploadImageField); }
         public IWebElement DateValidFrom { get => webDriver.FindElement(_dateValidFrom); }
         public IWebElement NameInput => WaitForElementExists(_nameInputLocator);
+
+        public string ProductNameValue() => NameInput.GetAttribute("value").Trim();
         
         public TabGeneral(IWebDriver driver) : base(driver) { }
 
