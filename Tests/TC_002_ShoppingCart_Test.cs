@@ -8,7 +8,7 @@ using System.Threading;
 namespace Tests
 {
     [TestFixture]
-    public class RegistrationPageTests : BaseTest<ChromeDriver>
+    public class TC_002_ShoppingCart_Test : BaseTest<ChromeDriver>
     {
         private Navigation navigationSection;
         private ProductPage productPage;

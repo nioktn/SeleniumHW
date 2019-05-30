@@ -7,7 +7,7 @@ using System.Threading;
 namespace Tests
 {
     [TestFixture]
-    public class TC_004_EnablingProduct_Test : BaseTest<ChromeDriver>
+    public class TC_005_PlaceNewOrder_Test : BaseTest<ChromeDriver>
     {
         private const string ProductName = "Blue Duck";
         private LoginSection loginSection;
@@ -21,7 +21,7 @@ namespace Tests
         private Catalog catalogContent;
 
         [Test]
-        public void Test_DisableEnableProduct()
+        public void Test_PlaceNewOrder()
         {
             Thread.Sleep(1000);
             //Navigate to main page
@@ -69,17 +69,15 @@ namespace Tests
             navigationSeciton = new Navigation(webDriver);
             navigationSeciton.ExequteSearchQuery("Blue Duck");
             productPage = new ProductPage(webDriver);
-            Assert.IsFalse(productPage.IsProductPageOpened(), $"Product isn't disabled but must be");
-
-            // Navigate to Admin page
-            webDriver.Url = "http://localhost/litecart/admin";
+            Assert.IsFalse(productPage.IsProductPageOpened());
 
             // Navigate to product editor
             adminSidebar.SelectMenuItem("Catalog");
             catalogContent = new Catalog(webDriver);
-            catalogContent.ClickOnTableEntry("Rubber Ducks");
+            catalogContent.SelectMenuItem("Rubber Ducks");
             addEditProductPage = catalogContent.OpenProductEditor(ProductName);
             generalTab = new TabGeneral(webDriver);
+            Assert.AreEqual(generalTab.NameInput, ProductName, $"Editor page for product with name \"{ProductName}\" isn't opened");
 
             // Enable product after test is passed
             generalTab.EnableProduct();

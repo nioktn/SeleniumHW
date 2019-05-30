@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
+using Tests.Logs;
 
 namespace Tests
 {
@@ -35,7 +36,7 @@ namespace Tests
         [TearDown]
         public virtual void CleanUp()
         {
-
+            Log4LiteCart.Log();
         }
 
         [OneTimeTearDown]
