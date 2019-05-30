@@ -9,11 +9,11 @@ namespace Pages
     {
         private const string _catalogTableLocator = "//h1[contains(text(),'Catalog')]/..//table";
         private const string _addNewProduct = "//*[contains(text(),'Add New Product')]";
-        private readonly By _addNewCategory = By.XPath("//*[contains(text(),'Add New Category')]");
+        private const string _addNewCategory = "//*[contains(text(),'Add New Category')]";
 
         public IWebElement CatalogTable => WaitForElementExists(_catalogTableLocator);
         public IWebElement AddNewProduct { get => WaitForElementIsClickable(_addNewProduct); }
-        public IWebElement AddNewCategory { get => webDriver.FindElement(_addNewCategory); }
+        public IWebElement AddNewCategory { get => WaitForElementIsClickable(_addNewCategory); }
 
         public Catalog(IWebDriver driver) : base(driver) { }
 

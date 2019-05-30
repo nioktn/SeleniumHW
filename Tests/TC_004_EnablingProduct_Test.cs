@@ -2,7 +2,6 @@
 using OpenQA.Selenium.Chrome;
 using Pages;
 using Pages.PageObjects.NavigationMenu;
-using System.Linq;
 using System.Threading;
 
 namespace Tests
@@ -10,7 +9,7 @@ namespace Tests
     [TestFixture]
     public class TC_004_EnablingProduct_Test : BaseTest<ChromeDriver>
     {
-        private const string ProductName = "Red Duck";
+        private const string ProductName = "Green Duck";
         private LoginSection loginSection;
         private LoggedUserSection loggedUserSection;
         private Navigation navigationSeciton;
@@ -30,13 +29,13 @@ namespace Tests
             loginSection = new LoginSection(webDriver);
 
             // LogIn as a registered user
-            loginSection.LogInStoreUser("user@email.com", "password");
+            loginSection.LogInStoreUser("user@mail.com", "password");
 
             // Search for product
             navigationSeciton = new Navigation(webDriver);
-            navigationSeciton.ExequteSearchQuery("Red Duck");
+            navigationSeciton.ExequteSearchQuery("Green Duck");
             productPage = new ProductPage(webDriver);
-            Assert.AreEqual("Red Duck", productPage.ProductName, $"Product page with name \"{ProductName}\" isn't found");
+            Assert.AreEqual("Green Duck", productPage.ProductName, $"Product page with name \"{ProductName}\" isn't found");
             loggedUserSection = new LoggedUserSection(webDriver);
             loggedUserSection.Logout.Click();
 
@@ -64,11 +63,11 @@ namespace Tests
             loginSection = new LoginSection(webDriver);
 
             // LogIn as a registered user
-            loginSection.LogInStoreUser("user@email.com", "password");
+            loginSection.LogInStoreUser("user@mail.com", "password");
 
             // Search for product
             navigationSeciton = new Navigation(webDriver);
-            navigationSeciton.ExequteSearchQuery("Red Duck");
+            navigationSeciton.ExequteSearchQuery("Green Duck");
             productPage = new ProductPage(webDriver);
             Assert.IsFalse(productPage.IsProductPageOpened());
 
