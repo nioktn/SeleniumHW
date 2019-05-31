@@ -25,5 +25,11 @@ namespace Pages.PageObjects.NavigationMenu
             Wait.GetInstance(webDriver, TimeSpan.FromSeconds(10)).Until((d) => ElemHelper.IsElementVisible(webDriver, _logout));
             Logout.Click();
         }
+
+        public OrderHistoryPage OpenOrderHistoryPage()
+        {
+            OrderHistory.Click();
+            return new OrderHistoryPage(webDriver);
+        }
     }
 }

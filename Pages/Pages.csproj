@@ -72,6 +72,8 @@
     <Compile Include="PageObjects\AdminPage\Contents\Countries\Countries.cs" />
     <Compile Include="PageObjects\AdminPage\Contents\Customers\EditCustomerPage.cs" />
     <Compile Include="PageObjects\AdminPage\Contents\Customers\CustomersPage.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Orders\AddEditProduct.cs" />
+    <Compile Include="PageObjects\AdminPage\Contents\Orders\Orders.cs" />
     <Compile Include="PageObjects\AdminPage\Sidebar.cs" />
     <Compile Include="Helpers\EnumHelpers.cs" />
     <Compile Include="Helpers\WaitHelper.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="PageObjects\MainPageContent\HomePageContent.cs" />
     <Compile Include="PageObjects\MainPageContent\PageContent.cs" />
     <Compile Include="PageObjects\PageObjectBase.cs" />
+    <Compile Include="PageWrapper\OrderHistoryPage.cs" />
     <Compile Include="PageWrapper\CartPage.cs" />
     <Compile Include="HeaderWrapper.cs" />
     <Compile Include="PageWrapper\MainPage\MainPage.cs" />
